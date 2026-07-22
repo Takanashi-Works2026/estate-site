@@ -22,6 +22,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- Webアプリマニフェスト（Android/PWA用） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -39,7 +40,12 @@
                             <span class="header__logo-text">株式会社北村建設興業</span>
                         </a>
                     </h1>
-                    <nav class="header__nav pc">
+                    <div class="header__hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <nav class="header__nav">
                         <ul>
                             <li>
                                 <a href="#about">ABOUT</a>
@@ -61,22 +67,38 @@
                             </li>
                         </ul>
                     </nav>
-                    <button class="header__hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+
                 </div>
             </header>
             <main>
                 <!-- FV -->
                 <section id="mv" class="mv">
-                    <div class="mv">
-                        <div class="mv__image">
+                    <div class="swiper mv-swiper">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
                             <picture>
                                 <source media="(min-width: 768px)" srcset="./image/firstview_pc01.png">
                                 <img src="./image/firstview-sp01.png" alt="家の写真">
                             </picture>
+                            </div>
+                            <div class="swiper-slide">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="./image/firstview_pc02.png">
+                                <img src="./image/firstview-sp02.png" alt="家の写真">
+                            </picture>
+                            </div>
+                            <div class="swiper-slide">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="./image/firstview_pc03.png">
+                                <img src="./image/firstview-sp03.png" alt="家の写真">
+                            </picture>
+                            </div>
+                        </div>
+                        <!-- ページネーション -->
+                        <div class="swiper-pagination"></div>
+                        <!-- 矢印 -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                         </div>
                         <div class="mv__catch">
                             <h2>
@@ -194,68 +216,68 @@
                             <p>施工事例</p>
                         </div>
                         <div class="works__contents">
-                            <div class="works-item works-item">
+                            <div class="works-item" data-image="./image/works_pc01.png">
                                 <div class="works-item__image">
                                     <picture>
-                                        <img src="./image/works_pc01.png" alt="長崎県T.O様自宅">
+                                        <img src="./image/works_pc01.png" alt="長崎県T.O様自宅" class="thumbnail">
                                     </picture>
 
                                 </div>
                                 <div class="works-item__textarea">
                                     <h3>【新築】</h3>
-                                
-                                <div class="works-item__text">
-                                    <p>長崎県T.O様自宅</p>
 
-                                </div>
+                                    <div class="works-item__text">
+                                        <p>長崎県T.O様自宅</p>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="works-item works-item">
+                            <div class="works-item" data-image="./image/works_pc02.png">
                                 <div class="works-item__image">
                                     <picture>
-                                        <img src="./image/works_pc02.png" alt="京都府カトリック丹波教会">
+                                        <img src="./image/works_pc02.png" alt="京都府カトリック丹波教会" class="thumbnail">
                                     </picture>
 
                                 </div>
                                 <div class="works-item__textarea">
                                     <h3>【リノベーション】</h3>
-                                
-                                <div class="works-item__text">
-                                    <p>京都府カトリック丹波教会</p>
 
-                                </div>
+                                    <div class="works-item__text">
+                                        <p>京都府カトリック丹波教会</p>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="works-item works-item">
+                            <div class="works-item" data-image="./image/works_pc03.png">
                                 <div class="works-item__image">
                                     <picture>
-                                        <img src="./image/works_pc03.png" alt="東京都A.F様自宅兼事務所">
+                                        <img src="./image/works_pc03.png" alt="東京都A.F様自宅兼事務所" class="thumbnail">
                                     </picture>
 
                                 </div>
                                 <div class="works-item__textarea">
                                     <h3>【新築】</h3>
-                                
-                                <div class="works-item__text">
-                                    <p>東京都A.F様自宅兼事務所</p>
 
-                                </div>
+                                    <div class="works-item__text">
+                                        <p>東京都A.F様自宅兼事務所</p>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="works-item works-item">
+                            <div class="works-item" data-image="./image/works_pc04.png">
                                 <div class="works-item__image">
                                     <picture>
-                                        <img src="./image/works_pc04.png" alt="山形県銀山温泉協同組合">
+                                        <img src="./image/works_pc04.png" alt="山形県銀山温泉協同組合" class="thumbnail">
                                     </picture>
 
                                 </div>
                                 <div class="works-item__textarea">
                                     <h3>【都市開発】</h3>
-                                
-                                <div class="works-item__text">
-                                    <p>山形県銀山温泉協同組合</p>
 
-                                </div>
+                                    <div class="works-item__text">
+                                        <p>山形県銀山温泉協同組合</p>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -271,297 +293,314 @@
                             <div class="news__contents">
                                 <h3>お知らせ</h3>
                                 <div class="news__lists">
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
 
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">公式Instagram、YouTubeはじめました。</p>
-                                    </a>
-                                </div>
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">公式Instagram、YouTubeはじめました。</p>
+                                        </a>
+                                    </div>
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
 
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">非住宅 木造建築フェアに出展します。</p>
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">非住宅 木造建築フェアに出展します。</p>
 
-                                    </a>
-                                </div>
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">公式ホームページがリニューアルしました。</p>
-                                    </a>
-                                </div>
-                                <div class="news__icon">
-                                    <p>more</p>
-                                    <img src="./image/works_icon.svg" alt="矢印のアイコン">
-                                </div>
+                                        </a>
+                                    </div>
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">公式ホームページがリニューアルしました。</p>
+                                        </a>
+                                    </div>
+                                    <div class="news__more">
+                                        <a href="#">
+                                        <span>more</span>
+                                        <img src="./image/works_icon.svg" alt="矢印のアイコン">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="news__contents">
                                 <h3>ブログ</h3>
-                                 <div class="news__lists">
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">あけましておめでとうございます。〜会長から社員まで〜</p>
-                                    </a>
-                                </div>
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">【検証】土地と人に相性はあるのか？</p>
+                                <div class="news__lists">
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">あけましておめでとうございます。〜会長から社員まで〜</p>
+                                        </a>
+                                    </div>
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">【検証】土地と人に相性はあるのか？</p>
 
-                                    </a>
-                                </div>
-                                <div class="news__list">
-                                    <a href="#" class="news-item ">
-                                        <time class="news__date" datetime="0000-00">0000.00</time>
-                                        <p class="news__text">弊社創業初の入社式が行われました。</p>
-                                    </a>
-                                </div>
-                                <div class="news__icon">
-                                    <p>more</p>
-                                    <img src="./image/works_icon.svg" alt="矢印のアイコン">
-                                </div>
+                                        </a>
+                                    </div>
+                                    <div class="news__list">
+                                        <a href="#" class="news-item ">
+                                            <time class="news__date" datetime="0000-00">0000.00</time>
+                                            <p class="news__text">弊社創業初の入社式が行われました。</p>
+                                        </a>
+                                    </div>
+                                    <div class="news__more">
+                                        <a href="#">
+                                        <span>more</span>
+                                        <img src="./image/works_icon.svg" alt="矢印のアイコン">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                             </div>
                         </div>
                     </div>
-                </section>
-                <section id="campany" class="campany">
-                    <div class="company__inner inner">
-                        <div class="campany__title section-title">
-                            <h2>COMPANY</h2>
-                            <p>会社概要</p>
-                        </div>
-                        
-                            <div class="campany__item campany__item">
-                                <div class="campany__map">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13386.372253213129!2d129.77299654186868!3d32.98813647568271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356abb0261bec585%3A0xf1f109703254736c!2z6ZW35bSO44OQ44Kk44Kq44OR44O844Kv!5e0!3m2!1sja!2sjp!4v1782141249768!5m2!1sja!2sjp"
-                                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
-                                <div class="campany__textarea">
-                                    <address>
-                                        <div class="first__text">
-                                            <h3>株式会社 北村建設興業</h3>
-                                        </div>
-
-                                        <div class="campany__address">
-                                            <p>〒852-8065<br>長崎県長崎市横尾○丁目○-○</p>
-                                        </div>
-                                        <div class="campany__phone">
-                                            <p><span>TEL：</span>
-                                                <a href="tel:00000000000">
-                                                    <span class="tel-pc"> 000-0000-0000</span></a>
-                                            </p>
-                                        </div>
-                                        <div class="campany__email">
-                                            <span>メール：</span><a href="mailto:info@example.com">info@example.com</a>
-                                        </div>
-                                    </address>
-                                </div>
-
-                            </div>
-                    </div>
-                </section>
-                <section id="contact" class="contact">
-                    <div class="inner">
-
-                        <div class="section-title">
-                            <h2>CONTACT</h2>
-                            <p>お問い合わせ</p>
-                        </div>
-
-                        <p class="contact__lead">
-                            ３営業日以内にメールにてご連絡いたします。*は入力必須項目となります。
-                        </p>
-
-                        <form class="contact__form">
-
-                            <div class="contact__row">
-                                <label for="name">お名前 *</label>
-                                <input id="name" type="text" placeholder="例：北村太郎">
-                            </div>
-
-                            <div class="contact__row">
-                                <label>性別</label>
-                                <div class="contact__radio">
-                                    <label><input type="radio" name="gender">男性</label>
-                                    <label><input type="radio" name="gender">女性</label>
-                                </div>
-                            </div>
-
-                            <div class="contact__row">
-                                <label for="mail">メールアドレス*</label>
-                                <input id="mail" type="email" placeholder="例：aaaaaa@gmail.com">
-                            </div>
-
-                            <div class="contact__row">
-                                <label for="select">お問い合わせ種別</label>
-
-                                <select id="select">
-                                    <option>家づくりについて</option>
-                                    <option>資料請求</option>
-                                    <option>その他</option>
-                                </select>
-                            </div>
-
-                            <div class="contact__row-content">
-                                <label for="message">内容*</label>
-
-                                <textarea id="message"></textarea>
-                            </div>
-
-                            <div class="contact__row-check">
-                                <p>何を見て当社HPを知りましたか？ (複数回答可)　*</p>
-
-                                <div class="contact__check">
-
-                                    <label><input type="checkbox">インターネット</label>
-                                    <label><input type="checkbox">チラシ</label>
-                                    <label><input type="checkbox">住宅展示場</label>
-                                    <label><input type="checkbox">看板</label>
-                                    <label><input type="checkbox">各種SNS</label>
-                                    <label><input type="checkbox">紹介</label>
-                                    <label><input type="checkbox">通りがかり</label>
-                                    <label><input type="checkbox">その他</label>
-
-                                </div>
-                            </div>
-
-                            <div class="contact__row-policy">
-                                <label>個人情報保護方針</label>
-
-                                <div class="contact__policy">
-                                    <p>
-                                個人情報取扱事業者の氏名又は名称(法24条1項1号)<br>
-                                株式会社 北村建設興業<br>
-                                <br>
-                                個人情報の取り扱い<br>
-                                弊社は、個人情報保護に関連する法令を遵守し、お客様からご提供いただく個人情報を、細心の注意を払って取り扱っております。このプライバシーポリシーでは、当社におけるお客様の個人情報の取扱いについてご説明しております。
-
-                                個人情報の利用目的(法18条、15条)
-                                弊社は建築物の設計、施工を主とした当社業務ならびにアフターサービスをさせていただく上で、お客様の個人情報を原則として次の利用目的の範囲内で利用させていただきます。なお、アンケート用紙・ウェブサイトの他のページ等で特に利用目的を定めている場合は、その利用目的を含みます。
-
-                                ・お客様からご注文頂いた工事を適切に完成させるため及び物品の納品をさせて頂くため、お客様へ弊社が取扱う商品を積極的に提案する営業活動のため、商品及びサービスの提供に関する手続(融資・申請・保証・保険・登記など)の支援、取次ぎのため
-                                ・お客様に弊社が取扱う商品、企業活動、イベント等に関するお知らせをお届けするため (カタログ、ご提案資料、展示のご案内、各種刊行物など)
-                                ・見学会等へご来場のお客様へのご商談、ご来場日時の確認のため
-                                ・商品やサービスについてお客さまからいただいたご意見を活用するため
-                                ・商品のアフターサービス、メンテナンス等のためにお客さまと接触するため
-                                ・その他お客さまから寄せられたご意見、ご要望にお応えするため、及び弊社が取扱う商品、サービス等の向上を図るため
-
-                                保有個人データ利用目的(法24条1項2号)
-                                ・当社が建築したお客様宅のアフターメンテナンスを行うため
-                                ・当社がお客様に提供するサービスにおいて利用するため
-                                ・お客様に特別なサービスや新しい商品などの情報を的確にお知らせするため
-                                ・お客様に合ったサービスを提供するため
-                                ・当社の建築した住宅の利用状況や利用環境などに関する調査を実施して客観的にお客様の満足度を把握するため
-                                ・必要に応じてお客様に連絡を行うため
-                                ・会計監査上の確認作業を行うため
-
-                                個人情報の安全対策(法20条)
-                                お客様の個人情報を安全に管理・運営するよう鋭意努力しており、個人情報への外部からの不正なアクセス、個人情報の紛失・毀損・破壊・改ざん・漏えい、社外への不正な流出などへの危険防止に対する合理的かつ適切な安全対策を行っています。また個人情報を取り扱う部門ごとに情報管理責任者を置き、個人情報の適切な管理に努めるとともに、情報セキュリティに関する規程を設けて社員への周知徹底を実施しています。
-
-                                第三者への提供(法23条)
-                                個人情報は、以下のいずれかに該当する場合を除いて、いかなる第三者にも開示・提供いたしません。
-                                ・お客さまの同意がある場合。
-                                ・お客様個人を識別することができない状態で開示する場合。
-                                ・業務を円滑に進める等の理由で外部事業者に取扱いを委託する場合。(この場合には、十分な保護水準を備えている委託先を選定し、漏えいや再提供を防止するために契約により義務づける等の方法によって、適切な管理を実施します)
-                                ・法令等により開示を要求された場合
-                                ・人の生命、身体又は財産の保護のために必要であって、お客様の同意を得ることが困難である場合
-                                ・国の機関や地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、お客様の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合
-
-                                個人情報の開示手続(法25条)
-                                お客様本人の個人情報に関する保有データの開示請求があった場合には、ご本人であることを運転免許証・パスポート等の身分証明書で確認させていただいた上、本人確認が終了後、速やかに開示させていただきます。
-
-                                個人情報の訂正等(法26条)
-                                前項の開示手続きにより、弊社が保有する保有個人データ内容に事実と異なる記載がある場合には、訂正、変更又は削除の手続きを取らせて頂きます。
-
-                                プライバシーポリシーに関するお問合せ先
-                                弊社の個人情報の取扱いに関するお問合せは、下記までお問い合せください。
-
-                                社名 株式会社北村建設興業
-                                住所 長崎県長崎市横尾○丁目○-○
-                                電話 000-000-0000
-                                FAX 000-000-0000
-                                メールアドレス info@example.com
-                                </p>
-                                </div>
-                            </div>
-
-                            <button class="contact__btn">
-                                内容に同意して送信
-                            </button>
-
-                        </form>
-
-                    </div>
-                </section>
-
-            </main>
         </div>
     </section>
-    <footer class="footer">
-        
-            <p class="footer__company">
-                株式会社 北村建設興業
-            </p>
-            <nav class="footer__nav">
-                <ul class="footer__list">
-                    <li>
-                        <a href="#mv">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="#about">SERVICE</a>
-                    </li>
-                    <li>
-                        <a href="#service">WORKS</a>
-                    </li>
-                    <li>
-                        <a href="#WORKS">NEWS</a>
-                    </li>
-                    <li>
-                        <a href="#company">COMPANY</a>
-                    </li>
-                    <li>
-                        <a href="#contact">CONTACT</a>
-                    </li>
-                </ul>
-            </nav>
-            
-            <div class="footer__sns">
-                <ul class="sns-list">
-                    <li>
-                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
-                            <img src="/image/icon-twitter.svg" alt="x">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                            <img src="/image/icon-facebook.svg" alt="facebook">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-                            <img src="/image/icon-youtube.svg" alt="youtube">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                            <img src="/image/icon-instagram.svg" alt="instagram">
-                        </a>
-                    </li>
-                </ul>
+    <section id="company" class="company">
+        <div class="company__inner inner">
+            <div class="company__title section-title">
+                <h2>COMPANY</h2>
+                <p>会社概要</p>
+            </div>
+
+            <div class="company__item company__item">
+                <div class="company__map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13386.372253213129!2d129.77299654186868!3d32.98813647568271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356abb0261bec585%3A0xf1f109703254736c!2z6ZW35bSO44OQ44Kk44Kq44OR44O844Kv!5e0!3m2!1sja!2sjp!4v1782141249768!5m2!1sja!2sjp"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="company__textarea">
+                    <address>
+                        <div class="first__text">
+                            <h3>株式会社 北村建設興業</h3>
+                        </div>
+
+                        <div class="company__address">
+                            <p>〒852-8065<br>長崎県長崎市横尾○丁目○-○</p>
+                        </div>
+                        <div class="company__phone">
+                            <p><span>TEL：</span>
+                                <a href="tel:00000000000">
+                                    <span class="tel-pc"> 000-0000-0000</span></a>
+                            </p>
+                        </div>
+                        <div class="company__email">
+                            <span>メール：</span><a href="mailto:info@example.com">info@example.com</a>
+                        </div>
+                    </address>
+                </div>
 
             </div>
-            <p class="footer__copyright">
-                ©︎Copyright0000　kitamurakensetukogyo
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="contact__inner inner">
+
+            <div class="section-title">
+                <h2>CONTACT</h2>
+                <p>お問い合わせ</p>
+            </div>
+
+            <p class="contact__lead">
+                ３営業日以内にメールにてご連絡いたします。*は入力必須項目となります。
             </p>
+
+            <form class="contact__form">
+
+                <div class="contact__row">
+                    <label for="name">お名前 *</label>
+                    <input id="name" type="text" placeholder="例：北村太郎">
+                </div>
+
+                <div class="contact__row">
+                    <label>性別</label>
+                    <div class="contact__radio">
+                        <label><input type="radio" name="gender">男性</label>
+                        <label><input type="radio" name="gender">女性</label>
+                    </div>
+                </div>
+
+                <div class="contact__row">
+                    <label for="mail">メールアドレス*</label>
+                    <input id="mail" type="email" placeholder="例：aaaaaa@gmail.com">
+                </div>
+
+                <div class="contact__row">
+                    <label for="select">お問い合わせ種別</label>
+
+                    <select id="select">
+                        <option>家づくりについて</option>
+                        <option>資料請求</option>
+                        <option>その他</option>
+                    </select>
+                </div>
+
+                <div class="contact__row-content">
+                    <label for="message">内容*</label>
+
+                    <textarea id="message"></textarea>
+                </div>
+
+                <div class="contact__row-check">
+                    <p>何を見て当社HPを知りましたか？ (複数回答可)　*</p>
+
+                    <div class="contact__check">
+
+                        <label><input type="checkbox">インターネット</label>
+                        <label><input type="checkbox">チラシ</label>
+                        <label><input type="checkbox">住宅展示場</label>
+                        <label><input type="checkbox">看板</label>
+                        <label><input type="checkbox">各種SNS</label>
+                        <label><input type="checkbox">紹介</label>
+                        <label><input type="checkbox">通りがかり</label>
+                        <label><input type="checkbox">その他</label>
+
+                    </div>
+                </div>
+
+                <div class="contact__row-policy">
+                    <label>個人情報保護方針</label>
+
+                    <div class="contact__policy">
+                        <p>
+                            個人情報取扱事業者の氏名又は名称(法24条1項1号)<br>
+                            株式会社 北村建設興業<br>
+                            <br>
+                            個人情報の取り扱い<br>
+                            弊社は、個人情報保護に関連する法令を遵守し、お客様からご提供いただく個人情報を、細心の注意を払って取り扱っております。このプライバシーポリシーでは、当社におけるお客様の個人情報の取扱いについてご説明しております。
+
+                            個人情報の利用目的(法18条、15条)
+                            弊社は建築物の設計、施工を主とした当社業務ならびにアフターサービスをさせていただく上で、お客様の個人情報を原則として次の利用目的の範囲内で利用させていただきます。なお、アンケート用紙・ウェブサイトの他のページ等で特に利用目的を定めている場合は、その利用目的を含みます。
+
+                            ・お客様からご注文頂いた工事を適切に完成させるため及び物品の納品をさせて頂くため、お客様へ弊社が取扱う商品を積極的に提案する営業活動のため、商品及びサービスの提供に関する手続(融資・申請・保証・保険・登記など)の支援、取次ぎのため
+                            ・お客様に弊社が取扱う商品、企業活動、イベント等に関するお知らせをお届けするため (カタログ、ご提案資料、展示のご案内、各種刊行物など)
+                            ・見学会等へご来場のお客様へのご商談、ご来場日時の確認のため
+                            ・商品やサービスについてお客さまからいただいたご意見を活用するため
+                            ・商品のアフターサービス、メンテナンス等のためにお客さまと接触するため
+                            ・その他お客さまから寄せられたご意見、ご要望にお応えするため、及び弊社が取扱う商品、サービス等の向上を図るため
+
+                            保有個人データ利用目的(法24条1項2号)
+                            ・当社が建築したお客様宅のアフターメンテナンスを行うため
+                            ・当社がお客様に提供するサービスにおいて利用するため
+                            ・お客様に特別なサービスや新しい商品などの情報を的確にお知らせするため
+                            ・お客様に合ったサービスを提供するため
+                            ・当社の建築した住宅の利用状況や利用環境などに関する調査を実施して客観的にお客様の満足度を把握するため
+                            ・必要に応じてお客様に連絡を行うため
+                            ・会計監査上の確認作業を行うため
+
+                            個人情報の安全対策(法20条)
+                            お客様の個人情報を安全に管理・運営するよう鋭意努力しており、個人情報への外部からの不正なアクセス、個人情報の紛失・毀損・破壊・改ざん・漏えい、社外への不正な流出などへの危険防止に対する合理的かつ適切な安全対策を行っています。また個人情報を取り扱う部門ごとに情報管理責任者を置き、個人情報の適切な管理に努めるとともに、情報セキュリティに関する規程を設けて社員への周知徹底を実施しています。
+
+                            第三者への提供(法23条)
+                            個人情報は、以下のいずれかに該当する場合を除いて、いかなる第三者にも開示・提供いたしません。
+                            ・お客さまの同意がある場合。
+                            ・お客様個人を識別することができない状態で開示する場合。
+                            ・業務を円滑に進める等の理由で外部事業者に取扱いを委託する場合。(この場合には、十分な保護水準を備えている委託先を選定し、漏えいや再提供を防止するために契約により義務づける等の方法によって、適切な管理を実施します)
+                            ・法令等により開示を要求された場合
+                            ・人の生命、身体又は財産の保護のために必要であって、お客様の同意を得ることが困難である場合
+                            ・国の機関や地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、お客様の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合
+
+                            個人情報の開示手続(法25条)
+                            お客様本人の個人情報に関する保有データの開示請求があった場合には、ご本人であることを運転免許証・パスポート等の身分証明書で確認させていただいた上、本人確認が終了後、速やかに開示させていただきます。
+
+                            個人情報の訂正等(法26条)
+                            前項の開示手続きにより、弊社が保有する保有個人データ内容に事実と異なる記載がある場合には、訂正、変更又は削除の手続きを取らせて頂きます。
+
+                            プライバシーポリシーに関するお問合せ先
+                            弊社の個人情報の取扱いに関するお問合せは、下記までお問い合せください。
+
+                            社名 株式会社北村建設興業
+                            住所 長崎県長崎市横尾○丁目○-○
+                            電話 000-000-0000
+                            FAX 000-000-0000
+                            メールアドレス info@example.com
+                        </p>
+                    </div>
+                </div>
+
+                <button class="contact__btn">
+                    内容に同意して送信
+                </button>
+
+            </form>
+
+        </div>
+    </section>
+
+    </main>
+    </div>
+    </section>
+    <footer class="footer">
+
+        <p class="footer__company">
+            株式会社 北村建設興業
+        </p>
+        <nav class="footer__nav">
+            <ul class="footer__list">
+                <li>
+                    <a href="#mv">ABOUT</a>
+                </li>
+                <li>
+                    <a href="#about">SERVICE</a>
+                </li>
+                <li>
+                    <a href="#service">WORKS</a>
+                </li>
+                <li>
+                    <a href="#WORKS">NEWS</a>
+                </li>
+                <li>
+                    <a href="#company">COMPANY</a>
+                </li>
+                <li>
+                    <a href="#contact">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="footer__sns">
+            <ul class="sns-list">
+                <li>
+                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="/image/icon-twitter.svg" alt="x">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="/image/icon-facebook.svg" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="/image/icon-youtube.svg" alt="youtube">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="/image/icon-instagram.svg" alt="instagram">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <p class="footer__copyright">
+            ©︎Copyright0000　kitamurakensetukogyo
+        </p>
     </footer>
+      <!-- モーダル用HTML -->
+       <div class="modal" id="modal">
+    <div class="modal__bg"></div>
+
+    <div class="modal__content">
+        <button class="modal__close">×</button>
+        <img class="modal__image" src="" alt="">
+    </div>
+</div>
+     
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,18 @@ $color-main: #4D9600;
 $color-background: rgba(77, 150, 0, 0.15);
 $font-family: "Yu Mincho", "YuMincho", "游明朝", serif;
 
+$breakpoints: (
+    sp: "screen and (max-width: 767px)",
+    tab: "screen and (min-width: 768px) and (max-width: 1023px)",
+    pc: "screen and (min-width: 1024px)",
+);
+
+@mixin mq($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
 /* base */
 html {
     -webkit-appearance: none;
@@ -31,6 +43,10 @@ body {
     line-height: calc(33 / 18);
     // headerの高さ分の余白を上に作る
     // margin-top: 5rem;
+}
+// modal用、画像拡大の間は背景のスクロール禁止
+body.is-fixed {
+    overflow: hidden;
 }
 
 #container {
@@ -109,11 +125,9 @@ img {
 /* ------------------------
    ヘッダー
 ------------------------- */
-
 .header {
     width: 100%;
     height: 8rem;
-    // background-color: $color-main;
     padding-inline: 3rem;
     position: fixed;
     top: 0;
@@ -122,7 +136,7 @@ img {
     display: flex;
     align-items: center;
 
-    @media (max-width:767px) {
+    @media (max-width: 767px) {
         padding-inline: 2rem;
     }
 
@@ -133,6 +147,9 @@ img {
         width: 100%;
     }
 
+    // ------------------------
+    // ロゴ
+    // ------------------------
     &__logo {
         a {
             display: flex;
@@ -149,166 +166,185 @@ img {
     }
 
     &__logo-text {
+        font-size: 2rem;
         font-weight: bold;
         color: $font-color-white;
-        font-size: 2rem;
-        line-height: calc(20 / 20);
     }
 
+    // ------------------------
+    // ナビゲーション（PC）
+    // ------------------------
     &__nav {
         margin-left: auto;
 
         ul {
             display: flex;
             align-items: center;
+            gap: 3rem;
             height: 8rem;
-            column-gap: 3rem;
+        }
 
-            li {
-                a {
-                    color: $font-color-white;
-                    font-size: 1.8rem;
-                    line-height: calc(18 / 18);
-                    transition: opacity .4s;
+        li a {
+            color: $font-color-white;
+            font-size: 1.8rem;
+            transition: opacity .3s;
 
-                    @media (any-hover: hover) {
-                        &:hover {
-                            opacity: .7;
-                        }
-                    }
+            @media (any-hover:hover) {
+                &:hover {
+                    opacity: .7;
                 }
             }
         }
     }
 
-    &__hamburger {
-        display: none;
-
-    }
-
-    // ハンバーガーメニュー
+    // ------------------------
+    // ハンバーガー
+    // ------------------------
     &__hamburger {
         display: none;
     }
 
+    // ========================
+    // SP
+    // ========================
     @media (max-width:767px) {
+
+        // ハンバーガーボタン
         &__hamburger {
+            background-color: $font-color-white;
             display: block;
-            width: 4rem;
-            height: 3rem;
             position: relative;
-            background: transparent;
+            width: 7%;
+            height: 5rem;
             border: none;
             cursor: pointer;
-            z-index: 99;
+            z-index: 1000;
+
+            span {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 0.4rem;
+                background: $color-main;
+                transition: .3s;
+
+                &:nth-child(1) {
+                    top: 0;
+                }
+
+                &:nth-child(2) {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                &:nth-child(3) {
+                    bottom: 0;
+                }
+            }
+
+            &.is-open {
+                span:nth-child(1) {
+                    top: 50%;
+                    transform: translateY(-50%) rotate(45deg);
+                }
+
+                span:nth-child(2) {
+                    opacity: 0;
+                }
+
+                span:nth-child(3) {
+                    top: 50%;
+                    bottom: auto;
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+            }
         }
 
-        &__hamburger span {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #333;
-            transition: .3s;
-        }
-
-        &__hamburger span:nth-child(1) {
-            top: 0;
-        }
-
-        &__hamburger span:nth-child(2) {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        &__hamburger span:nth-child(3) {
-            bottom: 0;
-        }
-
-        // test
-        .header__nav {
+        // ナビ
+        &__nav {
             position: fixed;
-            top: 0;
+            top: 7rem;
             right: -100%;
             width: 100%;
             height: 100vh;
-            background: white;
-
-            transition: .3s;
+            background: $color-main;
 
             display: flex;
             justify-content: center;
             align-items: center;
-        }
 
-        .header__nav.is-open {
-            right: 0;
-        }
+            transition: right .3s;
+            z-index: 999;
 
-        .header__hamburger.is-open span:nth-child(1) {
-            top: 50%;
-            transform: rotate(45deg);
-        }
+            ul {
+                flex-direction: column;
+                gap: 3rem;
+                height: auto;
+            }
 
-        .header__hamburger.is-open span:nth-child(2) {
-            opacity: 0;
-        }
+            a {
+                color: #fff;
+                font-size: 2.4rem;
+            }
 
-        .header__hamburger.is-open span:nth-child(3) {
-            top: 50%;
-            transform: rotate(-45deg);
-        }
-    }
-}
-
-.mv {
-    position: relative;
-
-    &__image {
-        width: 100%;
-        aspect-ratio: 1080 / 800;
-
-        @media (max-width: 767px) {
-            aspect-ratio: 375 / 600;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-    }
-
-    &__catch {
-        position: absolute;
-        top: 51.5%;
-        left: 51%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: $font-color-white;
-        z-index: 1;
-
-        @media (max-width: 767px) {
-            top: 51.5%;
-            left: 50.5%;
-        }
-
-        h2 {
-            font-size: 4rem;
-            line-height: calc(70 / 40);
-            letter-spacing: 0.3em;
-            // margin-bottom: 1rem;
-
-            @media (max-width: 767px) {
-                font-size: 3rem;
-                line-height: calc(60 / 30);
-                letter-spacing: 0.3em;
-                white-space: nowrap;
+            &.is-open {
+                right: -30%;
+                top: 7rem;
             }
         }
     }
 }
+
+
+.mv {
+    position: relative;
+    height: 100vh;
+
+    .swiper,
+    .swiper-slide,
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+
+&__catch {
+    position: absolute;
+    top: 51.5%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $font-color-white;
+    z-index: 1;
+
+    @media (max-width: 767px) {
+        top: 51.5%;
+        left: 50.5%;
+    }
+
+    h2 {
+        font-size: 4rem;
+        line-height: calc(70 / 40);
+        letter-spacing: 0.3em;
+        // margin-bottom: 1rem;
+
+        @media (max-width: 767px) {
+            font-size: 3rem;
+            line-height: calc(60 / 30);
+            letter-spacing: 0.3em;
+            white-space: nowrap;
+        }
+    }
+}
+}
+
 
 .about {
     width: 100%;
@@ -384,18 +420,36 @@ img {
     background-color: $color-background;
     padding: 8rem 0 13rem;
 
+    @include mq(sp) {
+        padding: 5rem 0;
+
+    }
+
     &__contents {
         padding-top: 7rem;
+
+        @include mq(sp) {
+            padding-top: 4rem;
+        }
     }
 
     &__inner {
         padding: 0 3rem;
 
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
     }
 
     &__item {
         display: flex;
         position: relative;
+
+        @include mq(sp) {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
 
         &--reverse {
             justify-content: flex-end;
@@ -415,6 +469,7 @@ img {
                 margin-right: 5rem;
             }
 
+
             .service__image {
                 display: flex;
                 flex-direction: column;
@@ -426,15 +481,59 @@ img {
                 text-align: right;
                 display: block;
             }
+
+            @include mq(sp) {
+                justify-content: normal;
+
+                .service__textareaContainer {}
+
+                .service__image {
+                    align-items: stretch;
+                }
+
+                .service__image-text {
+                    font-size: 1.6rem;
+                    line-height: calc(25 / 16);
+                    text-align: left;
+                }
+
+                .service__textarea-title,
+                .service__textarea-text {
+                    margin-right: 0;
+                    white-space: initial;
+                }
+
+                .service__textarea-title h3 {
+                    font-size: 2rem;
+                    line-height: calc(25 / 20);
+                }
+
+                .service__textarea {
+                    width: 100%;
+                    margin-top: 0.6rem;
+                    padding: 2rem;
+                    transform: none;
+                    box-sizing: border-box;
+
+                }
+            }
         }
     }
 
     &__item:nth-child(2) {
         margin-top: 13rem;
+
+        @include mq(sp) {
+            margin-top: 6rem;
+        }
     }
 
     &__item:nth-child(3) {
         margin-top: 13rem;
+
+        @include mq(sp) {
+            margin-top: 6rem;
+        }
     }
 
     &__image {
@@ -442,6 +541,10 @@ img {
         width: 100%;
         height: auto;
         z-index: 2;
+
+        @include mq(sp) {
+            max-width: 100%;
+        }
 
         img {
             width: 100%;
@@ -453,6 +556,10 @@ img {
             line-height: calc(25 / 16);
             margin-top: 2rem;
 
+            @include mq(sp) {
+                margin-top: 1rem;
+                text-align: left;
+            }
         }
     }
 
@@ -465,29 +572,52 @@ img {
         display: flex;
         z-index: 1;
 
+        @include mq(sp) {
+            position: static;
+            top: auto;
+            left: auto;
+            right: auto;
+            width: 100%;
+            max-width: none;
+        }
     }
-
 
     &__textarea {
         padding: 5rem 2.7rem 4.2rem 20rem;
-        right: 0;
         transform: translateY(50px);
         color: $font-color-white;
         background-color: $color-main;
 
+        @include mq(sp) {
+            width: 100%;
+            padding: 1rem;
+            transform: none;
+            box-sizing: border-box;
+        }
     }
 
     &__textarea-title {
         font-size: 2.5rem;
         line-height: calc(33 / 25);
         margin-left: 5rem;
+
+        @include mq(sp) {
+            margin-left: 2rem;
+            font-size: 2rem;
+            line-height: calc(25 / 20);
+        }
     }
 
     &__textarea-text {
         font-size: 1.6rem;
         line-height: calc(25 / 16);
         margin: 1.7rem 0 0 5rem;
-        white-space: nowrap;
+        // white-space: nowrap;
+
+        @include mq(sp) {
+            margin-left: 2rem;
+            white-space: normal;
+        }
     }
 }
 
@@ -496,15 +626,18 @@ img {
     padding: 8rem 0rem 3rem;
 
 
-    @media (max-width: 767px) {
-        .service {
+    @include mq(sp) {
             padding: 5rem 2rem 4.2rem;
-        }
+        
     }
 
     &__inner {
         margin-inline: auto;
         padding: 0 3rem;
+
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
     }
 
     &__contents {
@@ -512,11 +645,11 @@ img {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: calc(40 / 960 * 100%);
+        
 
-        @media (max-width:767px) {
-            flex-direction: column;
-            row-gap: 3.9rem;
-
+        @include mq(sp) {
+            grid-template-columns: 1fr;
+            row-gap: 4rem;
         }
     }
 
@@ -524,13 +657,23 @@ img {
         width: 100%;
         max-width: 200px;
         object-fit: cover;
+        
 
+        @include mq(sp) {
+            width: 100%;
+            max-width: 100%;
+        }
+
+    }
+    &-item__image {
+        cursor: pointer;
     }
 
     &-item__textarea {
         padding-top: 1.6rem;
         font-size: 1.6rem;
         line-height: calc(25 / 16);
+        
     }
 
     &-item__text {
@@ -538,6 +681,7 @@ img {
         line-height: calc(25 / 16);
         padding-top: 0.45rem;
         white-space: nowrap;
+        cursor: pointer; 
     }
 }
 
@@ -555,6 +699,11 @@ img {
         gap: 6rem;
         justify-content: space-between;
         margin: 5rem 2.5rem;
+
+        @include mq(sp) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__contents {
@@ -613,9 +762,13 @@ img {
         font-size: 1.8rem;
         line-height: calc(25 / 18);
         margin-left: 6.9rem;
+
+        @include mq(sp) {
+            margin-left: 1rem;
+        }
     }
 
-    &__icon {
+    &__more{
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -623,26 +776,45 @@ img {
         height: 6rem;
         color: $color-main;
 
-        p {
+
+        span {
             position: absolute;
-            top: 5%;
+            top: -10%;
             right: 10%;
+            transition: transform 0.3s ease;
         }
 
         img {
             width: 8rem;
             height: 100%;
+            padding-top: 1.5rem;
+            transition: transform 0.3s ease;
         }
+        &:hover {
+            span,
+            img {
+                transform: translateX(10px);
+            }
     }
+}
 
 }
 
-.campany {
+.company {
     width: 100%;
     padding: 8rem 0 10rem;
 
+    @include mq(sp) {
+        padding: 5rem 0;
+    }
+
+
     &__inner {
         padding: 0 3rem;
+
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
     }
 
     &__title {}
@@ -651,6 +823,12 @@ img {
         display: flex;
         margin-top: 6.8rem;
         position: relative;
+
+        @include mq(sp) {
+            margin-top: 3.8rem;
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__map {
@@ -659,6 +837,10 @@ img {
         position: relative;
         overflow: hidden;
         z-index: 3;
+
+        @include mq(sp) {
+            width: 100%;
+        }
     }
 
     &__map iframe {
@@ -678,6 +860,15 @@ img {
         width: 100%;
         z-index: 1;
 
+        @include mq(sp) {
+            position: static;
+            max-width: 100%;
+            width: 100%;
+            margin-top: 2rem;
+            padding: 2rem;
+            font-size: 2rem;
+            line-height: calc(33 / 20);
+        }
 
     }
 
@@ -699,17 +890,27 @@ img {
     &__address {
         font-size: 1.6rem;
         line-height: 25 / 16;
+
+        @include mq(sp) {
+            margin-top: 0.7rem;
+        }
     }
 
     .address-break {}
 
     &__phone {
-        span {}
+        @include mq(sp) {
+            margin-top: 1.2rem;
+        }
     }
 
     &__email {
         font-size: 1.6rem;
         line-height: calc(25 / 16);
+
+        @include mq(sp) {
+            margin-top: 1.9rem;
+        }
     }
 }
 
@@ -720,6 +921,10 @@ img {
     &__inner {
         padding: 0 3rem;
         margin-inline: auto;
+
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
     }
 
     &__lead {
@@ -742,7 +947,6 @@ img {
     &__row {
         display: flex;
         align-items: center;
-
     }
 
     // 左側のラベル
@@ -915,6 +1119,7 @@ img {
         border: none;
         background: $color-main;
         color: #fff;
+        border: solid 1px $color-main;
         font-size: 2rem;
         line-height: calc(33 / 20);
         text-align: center;
@@ -923,6 +1128,103 @@ img {
 
         &:hover {
             opacity: .8;
+            color: $color-main;
+            background-color: $font-color-white;
+        }
+    }
+
+    @include mq(sp) {
+        .contact {
+            padding: 5rem 0;
+
+            &__inner {
+                padding: 0 2rem;
+            }
+
+            &__lead {
+                margin: 3rem 0 0;
+                font-size: 1.6rem;
+                line-height: 1.8;
+            }
+
+            &__form {
+                margin-top: 4rem;
+                row-gap: 3rem;
+            }
+
+            // ラベルと入力欄を縦並び
+            &__row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            &__row>label,
+            &__row>p {
+                width: 100%;
+                font-size: 1.6rem;
+            }
+
+            // 内容入力
+            &__row-content {
+                gap: 1rem;
+            }
+
+            // ラジオボタン
+            &__radio {
+                gap: 3rem;
+                justify-content: flex-start;
+
+                label {
+                    font-size: 1.6rem;
+                    gap: 1rem;
+                }
+            }
+
+            // 入力フォーム
+            input[type="text"],
+            input[type="email"],
+            select,
+            textarea {
+                font-size: 1.6rem;
+                padding: 1rem;
+            }
+
+            textarea {
+                min-height: 18rem;
+            }
+
+            // チェックボックス
+            &__check {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem 2rem;
+
+                label {
+                    font-size: 1.5rem;
+                    gap: .8rem;
+                }
+            }
+
+            // 個人情報保護方針
+            &__policy {
+                height: 22rem;
+                padding: 1.5rem;
+
+                p {
+                    font-size: 1.4rem;
+                    line-height: 1.8;
+                }
+            }
+
+            // ボタン
+            &__btn {
+                width: 100%;
+                height: 5rem;
+                margin-top: 3rem;
+                font-size: 1.8rem;
+                
+            }
+
         }
     }
 }
@@ -967,7 +1269,7 @@ img {
             transition: 0.3s;
 
             &:hover {
-                color: $color-main;
+                opacity: 0.7;
             }
         }
     }
@@ -1008,5 +1310,104 @@ img {
         line-height: calc(33 / 20);
         text-align: center;
         padding: 3rem 0;
+    }
+
+    @include mq(sp) {
+        .footer {
+            padding-top: 4rem;
+
+            &__company {
+                width: calc(100% - 4rem);
+                margin: 0 auto;
+                padding: 0 0 2rem;
+                font-size: 1.8rem;
+                line-height: 1.8;
+                border-bottom: 1px solid #999;
+            }
+
+            &__nav {
+                padding: 2.5rem 2rem;
+                border-top: none;
+            }
+
+            &__list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem 1rem;
+                justify-items: center;
+
+                li {
+                    width: 100%;
+                }
+
+                a {
+                    font-size: 1.6rem;
+                    line-height: 1.6;
+                }
+            }
+
+            &__sns {
+                padding-bottom: 3rem;
+                margin-bottom: 0;
+
+                .sns-list {
+                    gap: 2.5rem;
+
+                    img {
+                        width: 2.6rem;
+                        height: 2.6rem;
+                    }
+                }
+            }
+
+            &__copyright {
+                padding: 2rem;
+                font-size: 1.4rem;
+                line-height: 1.6;
+            }
+        }
+    }
+}
+
+// modal用SCSS
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    &.is-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.8);
+    }
+
+    &__content {
+        position: relative;
+        width: 90%;
+        max-width: 900px;
+        z-index: 1;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: -5rem;
+        font-size: 4rem;
+        color: #fff;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 }
