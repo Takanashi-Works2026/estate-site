@@ -20,6 +20,7 @@ links.forEach((link) => {
   });
 });
 
+// swiper
 const swiper = new Swiper(".mv-swiper", {
   loop: true,
 
@@ -75,3 +76,29 @@ function closeModal(){
 
 close.addEventListener("click", closeModal);
 modalBg.addEventListener("click", closeModal);
+
+// ふわっと浮き出るアニメーション
+const fadeElements = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-show");
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+fadeElements.forEach((el) => observer.observe(el));
+
+// Page Top
+const pageTop = document.querySelector(".page-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    pageTop.classList.add("show");
+  } else {
+    pageTop.classList.remove("show");
+  }
+});
