@@ -1,0 +1,22 @@
+@use "variable" as *;
+
+@mixin sp {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+@mixin tab {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+@mixin pc {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

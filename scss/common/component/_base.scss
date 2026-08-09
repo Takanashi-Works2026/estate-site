@@ -1,0 +1,203 @@
+@use '../global/_variable' as *;
+@use '../global/_mixin' as *;
+
+
+html {
+    -webkit-appearance: none;
+    appearance: none;
+    /* Chrome以外での崩れ防止 */
+    -webkit-text-size-adjust: 100%;
+    /* コンテンツからはみ出ずに文字折り返し */
+    word-break: break-all;
+    /* 移動したときになめらかにスクロール */
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    font-size: 10px;
+    @media (min-width:768px) and (max-width:980px) {
+        font-size: calc(10 / 980 * 100vw);
+        font-size:  vw(10,980);
+    }
+    @include sp {
+        font-size: vw(10, 375);
+    }
+}
+
+
+body {
+    font-family: $font-family;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: $font-color-black;
+    font-size: 1.6rem;
+    line-height: calc(25 / 16);
+    letter-spacing: 0;
+}
+
+// modal用、画像拡大の間は背景のスクロール禁止
+body.is-fixed {
+    overflow: hidden;
+}
+body.is-open {
+    overflow: hidden;
+}
+// fade in用
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+
+    &.is-show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#container {
+    width: 100%;
+    overflow: hidden;
+}
+/*-------------------------
+   PC・SPのみの表示切替・改行防止・SPで改行
+-------------------------*/
+.pc-br {
+    display: block;
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sp-br {
+        display: none !important;
+    }
+
+
+    a[href^="tel:"] {
+        pointer-events: none;
+        cursor: default;
+    }
+}
+.no-break {
+    white-space: nowrap;
+}
+.sp-only {
+    display: none;
+
+    @include mq(sp) {
+        display: block;
+    }
+}
+
+/// SP対応のためのメディアクエリ
+
+@media (max-width: 767px) {
+    body {
+        font-size: 2rem;
+        line-height: calc(36 / 20);
+    }
+
+    .pc {
+        display: none !important;
+    }
+}
+// 共通パーツ
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#container {
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.inner {
+    max-width: 98rem;
+    margin-inline: auto;
+
+    @include sp {
+        // width: 31.5rem;
+    }
+}
+
+.section-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        font-size: 3rem;
+        line-height: calc(33 / 30);
+        color: $color-main;
+        letter-spacing: 0.75rem;
+        // padding-left: 5rem;
+
+        @media (max-width: 767px) {}
+    }
+
+    p {
+        font-size: 2rem;
+        line-height: calc(33 / 20);
+        margin-top: 0.6rem;
+        letter-spacing: 0.75rem;
+    }
+}
+
+// ページトップアイコン
+.page-top {
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+
+    width: 6.8rem;
+    height: 6.8rem;
+
+    border-radius: 50%;
+    background-color: $color-main;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease, visibility .3s ease, transform .3s ease;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    span {
+        width: 1.4rem;
+        height: 1.4rem;
+
+        border-top: 0.3rem solid $font-color-white;
+        border-right: 0.3rem solid $font-color-white;
+
+        transform: rotate(-45deg) translate(2px, 2px);
+    }
+
+    @include mq(sp) {
+        width: 5.6rem;
+        height: 5.6rem;
+        right: 2rem;
+        bottom: 2rem;
+
+        span {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
+}

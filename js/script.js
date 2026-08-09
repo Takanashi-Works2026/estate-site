@@ -4,7 +4,7 @@ const nav = document.querySelector(".header__nav");
   hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("is-open");
   nav.classList.toggle("is-open");
-
+  document.body.classList.toggle('is-open');
   console.log(nav.classList);
 });
 
@@ -33,15 +33,22 @@ const swiper = new Swiper(".mv-swiper", {
 
   effect: "fade",
 
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
+  
+});
 
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+// ヘッダーメニュがaboutまでスクロールしたら背景色を変える
+const header = document.querySelector('.header');
+const about = document.querySelector('#about');
+
+window.addEventListener('scroll', () => {
+    const aboutTop = about.getBoundingClientRect().top;
+    const headerHeight = header.offsetHeight;
+
+    if (aboutTop <= headerHeight) {
+        header.classList.add('is-scrolled');
+    } else {
+        header.classList.remove('is-scrolled');
+    }
 });
 
 // modal用
