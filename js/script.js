@@ -17,6 +17,7 @@ links.forEach((link) => {
   link.addEventListener("click", () => {
     hamburger.classList.remove("is-open");
     nav.classList.remove("is-open");
+    document.body.classList.remove("is-open");
   });
 });
 
@@ -57,15 +58,23 @@ const modal = document.querySelector("#modal");
 const modalImage = document.querySelector(".modal__image");
 const close = document.querySelector(".modal__close");
 const modalBg = document.querySelector(".modal__bg");
+const modalTitle = document.querySelector(".modal__title");
+const modalText = document.querySelector(".modal__text");
 
 
 worksItems.forEach(item => {
 
     item.addEventListener("click", () => {
-
-        const image = item.dataset.image;
+      console.log("WORKSがクリックされました");
+        const image = item.dataset.modalImage;
+        const title = item.querySelector(".works-item__textarea h3").textContent;
+        const text = item.querySelector(".works-item__text p").textContent;
 
         modalImage.src = image;
+        modalImage.alt = text;
+
+        modalTitle.textContent = title;
+        modalText.textContent = text;
 
         modal.classList.add("is-open");
         document.body.classList.add("is-fixed");
@@ -74,10 +83,9 @@ worksItems.forEach(item => {
 
 });
 
-
 function closeModal(){
     modal.classList.remove("is-open");
-    document.body.classList.add("is-fixed");
+    document.body.classList.remove("is-fixed");
 }
 
 
@@ -98,6 +106,26 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 fadeElements.forEach((el) => observer.observe(el));
+
+// about専用のフワと表示させるアニメーション
+const aboutFade = document.querySelector(".about__fade");
+if(aboutFade){
+  const observer = new IntersectionObserver(
+    (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.2
+        }
+    );
+
+    observer.observe(aboutFade);
+}
 
 // Page Top
 const pageTop = document.querySelector(".page-top");

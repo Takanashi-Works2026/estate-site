@@ -11,15 +11,8 @@ html {
     word-break: break-all;
     /* 移動したときになめらかにスクロール */
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 8rem;
     font-size: 10px;
-    @media (min-width:768px) and (max-width:980px) {
-        font-size: calc(10 / 980 * 100vw);
-        font-size:  vw(10,980);
-    }
-    @include sp {
-        font-size: vw(10, 375);
-    }
 }
 
 
@@ -33,7 +26,78 @@ body {
     line-height: calc(25 / 16);
     letter-spacing: 0;
 }
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
 
+    &.is-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+
+        width: 50rem;
+        background-color: #fff;
+
+        padding: 1.5rem;
+
+        box-sizing: border-box;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__textarea {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        padding: 1rem 0.5rem 0.5rem;
+    }
+
+    &__title,
+    &__text {
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: calc(25 / 16);
+    }
+
+    &__close {
+        position: absolute;
+        top: -0.3rem;
+        right:-0.3rem;
+
+        z-index: 2;
+
+        width: 2rem;
+        height: 2rem;
+
+        padding: 0;
+
+        border: none;
+        background-color: #fff;
+        background: transparent;;
+        color: #000;
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+}
 // modal用、画像拡大の間は背景のスクロール禁止
 body.is-fixed {
     overflow: hidden;
@@ -134,7 +198,7 @@ img {
         font-size: 3rem;
         line-height: calc(33 / 30);
         color: $color-main;
-        letter-spacing: 0.75rem;
+        letter-spacing: 0.3em;
         // padding-left: 5rem;
 
         @media (max-width: 767px) {}
@@ -144,7 +208,7 @@ img {
         font-size: 2rem;
         line-height: calc(33 / 20);
         margin-top: 0.6rem;
-        letter-spacing: 0.75rem;
+        letter-spacing: 0.6em;
     }
 }
 
@@ -186,9 +250,8 @@ img {
         border-top: 0.3rem solid $font-color-white;
         border-right: 0.3rem solid $font-color-white;
 
-        transform: rotate(-45deg) translate(2px, 2px);
+        transform: rotate(-45deg) translate(-2px,1.5px) ;
     }
-
     @include mq(sp) {
         width: 5.6rem;
         height: 5.6rem;

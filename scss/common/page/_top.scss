@@ -1,47 +1,6 @@
 @use "../global" as *;
 
-// modal用SCSS
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999;
 
-    &.is-open {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__bg {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, .8);
-    }
-
-    &__content {
-        position: relative;
-        width: 90%;
-        max-width: 900px;
-        z-index: 1;
-    }
-
-    &__image {
-        width: 100%;
-        height: auto;
-    }
-
-    &__close {
-        position: absolute;
-        right: 0;
-        top: -5rem;
-        font-size: 4rem;
-        color: #fff;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-}
 
 // ========================
 //  ファーストビュー
@@ -50,6 +9,15 @@
 .mv {
     position: relative;
     // height: 80rem;
+
+    // 黒のオーバーレイ
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.15);
+        z-index: 2;
+    }
 
     .swiper,
     .swiper-slide,
@@ -72,17 +40,17 @@
 
     &__catch {
         position: absolute;
-        top: 51.5%;
-        left: 51%;
+        top: 51%;
+        left: 50.5%;
         transform: translate(-50%, -50%);
         text-align: center;
         color: $font-color-white;
-        z-index: 1;
+        z-index: 3;
 
 
         @media (max-width: 767px) {
             top: 51.5%;
-            left: 50.5%;
+            left: 52%;
         }
 
         h2 {
@@ -109,69 +77,147 @@
     position: relative;
 
 
+    // テキスト全体
     &__textwrapper {
         position: absolute;
-        top: 23%;
-        left: 36.5%;
-        transform: translate(-50%, 0);
 
-        writing-mode: vertical-rl;
-        display: flex;
-        flex-direction: column;
-        // padding-right: 1rem;
+        top: 50%;
+        left: 36%;
 
-        @media (max-width: 767px) {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            transform: translate(0, 0);
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 2rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
+        transform: translate(-50%, -50%);
     }
 
+
+    // タイトル＋本文
+    &__fade {
+        display: flex;
+
+        // HTMLではタイトルが先なので、
+        // タイトルを右側にする
+        flex-direction: row-reverse;
+
+        align-items: flex-start;
+
+        opacity: 0;
+        transform: translateY(40px);
+
+        transition:
+            opacity 1s ease,
+            transform 1s ease;
+    }
+
+    &__fade.is-show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // タイトル
     &__title {
+        writing-mode: vertical-rl;
 
+        flex-shrink: 0;
+
+        margin: 0;
+        padding-left: 3rem;
         font-size: 3rem;
-        line-height: 1;
-        letter-spacing: 0.18em;
+        line-height: 1.18;
+        letter-spacing: 0.12em;
+
         padding-left: 5rem;
-
-        @media (max-width: 767px) {
-            font-size: 2.5rem;
-            line-height: 1.19;
-            padding-left: 0;
-        }
     }
 
+
+    // 本文
     &__text-contents {
-        display: flex;
-        flex-direction: column;
-        gap: 2.3rem;
-
-        @media (max-width: 767px) {
-            gap: 0.6rem;
-        }
+        margin: 0;
     }
+
 
     &__text {
-        font-size: 1.8rem;
-        line-height: calc(48 / 18);
-        letter-spacing: 0.37em;
+        writing-mode: vertical-rl;
 
-        @media (max-width: 767px) {
-            margin-top: 2.3rem;
-            font-size: 1.6rem;
-            line-height: 1.6;
-            letter-spacing: 0.4rem;
-        }
+        display: flex;
+        // 縦書きの列を横方向に並べる
+        flex-direction: column;
+        gap: 2.4rem;
+
+        margin: 0;
+
+        font-size: 1.8rem;
+        line-height: 1.37;
+
+        // 文字同士の間隔を調整
+        letter-spacing: 0.35em;
     }
 
+
+    &__text span {
+        display: block;
+
+        // spanの途中で折り返さない設定
+        white-space: nowrap;
+    }
+
+
+    // SP
+    @media (max-width: 767px) {
+
+        height: auto;
+        min-height: 55rem;
+
+
+        &__textwrapper {
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            transform: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 5rem 2rem;
+            box-sizing: border-box;
+        }
+
+
+        &__fade {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        &__title {
+            font-size: 2.5rem;
+            line-height: 0.16em;
+            writing-mode: vertical-rl;
+            flex-shrink: 0;
+            padding-left: 0;
+            // margin-top: 5rem;
+            transform: translateY(-2rem);
+        }
+
+
+        &__text {
+            gap: 0.6rem;
+
+            font-size: 1.6rem;
+            line-height: 1.25;
+            // padding-top: 1.5rem;
+            letter-spacing: 0.2em;
+            writing-mode: vertical-rl;
+        }
+
+        &__text span {
+            display: block;
+            white-space: nowrap;
+        }
+    }
 }
 
 .service {
@@ -202,6 +248,7 @@
     &__item {
         display: flex;
         position: relative;
+        width: 100%;
 
         @include mq(sp) {
             display: flex;
@@ -316,10 +363,12 @@
     }
 
     &__image {
+        width: clamp(48rem, 60rem, 100%);
         max-width: 60rem;
         width: 100%;
         height: auto;
         z-index: 2;
+
 
         @include mq(sp) {
             max-width: 100%;
@@ -331,7 +380,7 @@
         }
 
         &-text {
-            font-size: vw(16, 1080);
+            font-size: 1.6rem;
             line-height: calc(25 / 16);
             margin-top: 2rem;
 
@@ -349,10 +398,15 @@
         top: 27%;
         left: 45.5%;
         max-width: 50rem;
-        width: 100%;
+        // width: 100%;
         display: flex;
         z-index: 1;
 
+        @include mq(tab) {
+            top: 25%;
+            left: 43%;
+            width: 48%;
+        }
 
         @include mq(sp) {
             position: static;
@@ -370,6 +424,11 @@
         color: $font-color-white;
         background-color: $color-main;
 
+        @include mq(tab) {
+            padding: 3rem 2rem 2rem 7rem;
+            // transform: translateY(30px);
+        }
+
         @include mq(sp) {
             width: 100%;
             // margin-top: 1rem;
@@ -384,6 +443,12 @@
         line-height: calc(33 / 25);
         margin-left: 5rem;
 
+        @include mq(tab) {
+            font-size: 2rem;
+            line-height: calc(31/20);
+            margin-left: 0;
+        }
+
         @include mq(sp) {
             margin: 0.9rem 0 0 1rem;
             font-size: 2rem;
@@ -397,6 +462,12 @@
         margin: 1.7rem 0 0 5rem;
         // white-space: nowrap;
 
+        @include mq(tab) {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            margin: 1.2rem 0 0;
+        }
+
         @include mq(sp) {
             margin-left: 1rem;
             white-space: normal;
@@ -406,7 +477,7 @@
 
 .works {
     width: 100%;
-    padding: 8rem 0 2rem;
+    padding: 8rem 0 2.5rem;
 
 
     @include mq(sp) {
@@ -490,7 +561,6 @@
     &-item__text {
         font-size: 1.6rem;
         line-height: calc(25 / 16);
-        padding-top: 0.45rem;
         white-space: nowrap;
         cursor: pointer;
 
@@ -501,11 +571,15 @@
 }
 
 .news {
-    padding: 6rem 0 2.5rem;
+    padding: 6rem 0 8rem;
     background-color: $color-background;
 
     @include mq(sp) {
-        padding: 3rem 0 2rem;
+        padding: 3rem 0 5rem;
+    }
+
+    &__inner {
+        padding: 0 3rem;
     }
 
     &__title {
@@ -514,22 +588,36 @@
 
     &__wrapper {
         display: flex;
-        align-items: flex-start;
         gap: 6rem;
-        justify-content: space-between;
-        padding: 6rem 3rem;
+        margin-top: 6rem;
 
         @include mq(sp) {
             display: flex;
             flex-direction: column;
-            padding: 3rem 3rem;
-            gap: 5.5rem;
+            gap: 5rem;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+    }
+    &-list__wrapper {
+        @include mq(sp){
+            margin-top: 2rem;
+        }
+    }
+
+    // 1つ目だけ
+    .news-list__wrapper:first-of-type .news-item {
+        margin-top: 1rem;
+        @include mq(sp){
+            margin-top: 3rem;
         }
     }
 
     &__contents {
-        background-color: #fff;
         flex: 1;
+        background-color: #fff;
+        width: 50%;
 
         h3 {
             display: flex;
@@ -542,67 +630,66 @@
             line-height: calc(33 / 20);
         }
 
-
+        @include mq(sp) {
+            width: 100%;
+            font-size: 1.6rem;
+            line-height: calc(33 / 16);
+        }
     }
 
     &__lists {
         position: relative;
+
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
     }
 
-    &__list {
-        margin: 3rem 0 0;
-        padding-bottom: 1.6rem;
-        // display: inline-block;
-        // border-bottom: solid $color-main 0.1px;
-
-
-    }
-
-    &__list:nth-child(2) {
-        margin-top: 2rem;
-        padding-bottom: 1.6rem;
-    }
-
-    &__list:nth-child(3) {
-        margin-top: 2rem;
-        padding-bottom: 1.6rem;
-    }
 
     &-item {
         display: flex;
-        margin: 0 2.5rem 0;
+        // padding-top: 1rem;
+        padding: 2rem 2rem 1.3rem 2rem;
         position: relative;
+
+        @include mq(sp) {
+            padding: 0;
+        }
+
+
+
 
         &::after {
             content: "";
             position: absolute;
-            left: 0;
-            bottom: -1rem;
-            width: 100%;
+            left: 2rem;
+            right: 2rem;
+            bottom: 0;
             height: 0.1rem;
             background-color: $color-main;
         }
-
     }
+
 
 
     &__date {
         font-size: 1.6rem;
         line-height: calc(33 / 16);
         white-space: nowrap;
+        font-weight: 500;
     }
 
     &__text {
         font-size: 1.8rem;
         line-height: calc(25 / 18);
-        margin-left: 6.9rem;
+        margin-left: 5.7rem;
 
         .text-sp {
             display: none;
         }
 
         @include mq(sp) {
-            margin-left: 1rem;
+            margin: 0 0 1.3rem 1rem;
 
             .text-pc {
                 display: none;
@@ -616,42 +703,47 @@
         }
     }
 
+
     &__more {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
         position: relative;
-        height: 6rem;
-        font-size: 2rem;
-        color: $color-main;
-        transition: opacity 0.3s ease;
-
-
-        span {
-            position: absolute;
-            top: 10%;
-            right: 13%;
-            transition: transform 0.3s;
-        }
-
-        img {
-            position: absolute;
-            width: 8rem;
-            height: 100%;
-            top: 0;
-            right: 4.5%;
-            transition: transform 0.3s ease;
+        display: flex;
+        margin-top: 1rem;
+        height: 3.8rem;
+        width: 8rem;
+        transition: opacity 0.3s;
+        align-items: center;
+        margin: 1.7rem 2rem 2rem auto;
+        @include mq(sp){
+            margin: 1.7rem 0 2rem auto;
         }
 
         &:hover {
             opacity: 0.7;
-            span,
+
             img {
                 transform: translateX(10px);
             }
         }
-    }
 
+        &-span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 2rem;
+            color: $color-main;
+        }
+
+        &-arrow {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 1rem;
+
+            @include mq(sp) {
+                margin-top: 2rem;
+            }
+        }
+    }
 }
 
 .company {
@@ -659,7 +751,7 @@
     padding: 8rem 0 13rem;
 
     @include mq(sp) {
-        padding: 5rem 0 5.5rem;
+        padding: 4.5rem 0 5rem;
     }
 
 
@@ -686,7 +778,8 @@
     }
 
     &__map {
-        width: 65%;
+        width: 60rem;
+        height: 40rem;
         aspect-ratio: 600 / 400;
         position: relative;
         overflow: hidden;
@@ -708,10 +801,10 @@
     &__textarea {
         background-color: $color-main;
         color: $font-color-white;
-        padding: 4.9rem 3rem 7rem 21.5rem;
+        padding: 4.9rem 3rem 5rem 22rem;
         position: absolute;
-        top: 49%;
-        left: 46%;
+        top: 19.8rem;
+        left: 42rem;
         max-width: 50rem;
         width: 100%;
         z-index: 1;
@@ -720,7 +813,7 @@
             position: static;
             max-width: 100%;
             width: 100%;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             padding: 2rem;
             font-size: 2rem;
             line-height: calc(33 / 20);
@@ -740,13 +833,13 @@
         line-height: calc(25 / 16);
         margin: 1.7rem 0 0 5rem;
         left: auto;
-        right: 45.5%;
+        right: 45rem;
     }
 
     &__address {
         font-size: 1.6rem;
-        line-height: 25 / 16;
-        margin-top: 0.5rem;
+        line-height: calc(25/16);
+        margin-top: 0.7rem;
 
         span {}
 
@@ -760,6 +853,7 @@
     &__phone {
         font-size: 1.6rem;
         line-height: calc(16 / 25);
+        margin-top: 1rem;
 
         .tel-pc {
             font-size: 2.5rem;
@@ -767,7 +861,7 @@
         }
 
         @include mq(sp) {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
         }
     }
 
@@ -775,10 +869,11 @@
         font-size: 1.6rem;
         line-height: calc(25 / 16);
         transition: opacity 0.3s;
+        margin-top: 2rem;
 
         &:hover {
             opacity: 0.3;
-        } 
+        }
 
         @include mq(sp) {
             margin-top: 1.9rem;
@@ -802,7 +897,7 @@
     &__lead {
         font-size: 2rem;
         line-height: calc(33 / 20);
-        margin: 3.8rem 0 0 6rem;
+        margin: 3.8rem 0 0 9.1rem;
     }
 
     &__form {
@@ -819,9 +914,6 @@
     &__row {
         display: flex;
         align-items: center;
-        
-        
-        
     }
 
     // 左側のラベル
@@ -875,11 +967,12 @@
         align-items: center;
         gap: 7.4rem;
 
+
         label {
             display: flex;
             align-items: center;
             gap: 1.9rem;
-            width: auto;
+            cursor: pointer;
             font-size: 1.8rem;
             line-height: calc(25 / 18);
         }
@@ -899,7 +992,7 @@
     }
 
     input[type="radio"]:checked {
-        border-color: $color-main;
+        border-color: $font-color-white;
     }
 
     input[type="radio"]:checked::before {
@@ -907,9 +1000,9 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 1rem;
-        height: 1rem;
-        background: $color-main;
+        width: 0.7rem;
+        height: 0.7rem;
+        background: $font-color-black;
         border-radius: 50%;
         transform: translate(-50%, -50%);
     }
@@ -947,9 +1040,10 @@
         flex-direction: column;
         // margin-top: 1rem;
 
-        label {
+        >label {
             font-size: 2rem;
             line-height: calc(33 / 20);
+            width: fit-content;
         }
 
         textarea {
@@ -962,6 +1056,7 @@
         flex-direction: column;
         font-size: 2rem;
         line-height: calc(33 / 20);
+        cursor: pointer;
 
     }
 
@@ -977,40 +1072,56 @@
             display: flex;
             align-items: center;
             gap: 2rem;
-            width: auto;
+            width: fit-content;
+            cursor: pointer;
             font-size: 1.8rem;
             line-height: calc(25 / 18);
         }
     }
 
     &__row-policy {
-        display: flex;
-        flex-direction: column;
-        font-size: 2rem;
-        line-height: calc(33 / 20);
+        h3 {
+            font-size: 2rem;
+            line-height: calc(33 / 20);
+        }
+    }
+
+    &__policy-box {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 3rem;
+        height: 30rem;
+        margin-top: 1rem;
+        overflow: auto;
 
     }
 
     &__policy {
         width: 100%;
-        height: 30rem;
-        padding: 2rem;
-        margin-top: 1rem;
+        font-size: 1.8rem;
+        line-height: calc(31 / 18);
+        padding: 1rem;
+        // margin-top: 1rem;
         background: #fff;
-        border: 1px solid #ddd;
-        overflow: auto;
 
-        p {
-            font-size: 1.8rem;
-            line-height: calc(31 / 18);
-            white-space: pre-line;
+        &:not(:first-child) {
+            margin-top: 1rem;
         }
+
+        h4 {}
+
+
+    }
+
+    &__formsubmit-area {
+        display: flex;
+        align-items: center;
     }
 
     &__btn {
         width: 30rem;
         height: 5rem;
-        margin: 3rem auto 0;
+        margin: 7.5rem auto 0;
         border: none;
         background: $color-main;
         color: #fff;
@@ -1018,12 +1129,13 @@
         font-size: 2rem;
         line-height: calc(33 / 20);
         // display: flex;
+        align-items: center;
         text-align: center;
         cursor: pointer;
-        transition: .3s;
+        transition: 0.3s;
 
         &:hover {
-            opacity: .8;
+            opacity: 0.7;
             color: $color-main;
             background-color: $font-color-white;
         }
@@ -1060,8 +1172,8 @@
                 flex-direction: row;
 
 
-                >label {
-                    width: auto;
+                label {
+                    width: fit-content;
                     flex-shrink: 0;
                 }
             }
@@ -1076,8 +1188,9 @@
 
             // 内容入力
             &__row-content {
-                // gap: 1rem;
 
+                // gap: 1rem;
+                >label {}
 
                 textarea {
                     margin-top: 0;
@@ -1118,16 +1231,18 @@
             &__check {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem 2rem;
+                cursor: pointer;
+                margin-top: 0;
 
                 label {
+                    cursor: pointer;
                     font-size: 1.5rem;
-                    gap: .8rem;
-                }
+                    gap: 0.8rem;
             }
-
+        }
             // 個人情報保護方針
             &__policy {
-                height: 32rem;
+                
                 padding: 1.5rem;
                 margin-top: 0;
 
@@ -1136,18 +1251,29 @@
                     line-height: calc(33 / 16);
                 }
             }
+            &__policy-box {
+                height: 32rem;
+                margin-top: 0;
+                padding: 1.5rem;
+            }
+            &__formsubmit-area {
+                display: flex;
+                align-items: center;
+            }
 
             // ボタン
             &__btn {
+                align-items: center;
                 width: 100%;
                 height: 5rem;
-                margin-top: 1.5rem;
+                margin-top:5rem;
                 font-size: 1.8rem;
 
             }
 
-        }
+        
     }
+}
 }
 
 
@@ -1158,20 +1284,26 @@
     &__company {
         // margin: 3.3rem;
         text-align: center;
-        padding: 3rem 0;
+        padding: 3rem 0 3rem 0;
         font-size: 2rem;
         line-height: calc(33 / 20);
         width: 70%;
         margin: 0 auto;
-        border-bottom: 1px solid #999;
 
+        transition: 0.3s;
+
+        &:hover {
+            opacity: 0.7;
+        }
     }
 
 
 
     &__nav {
-        position: relative;
-        padding: 3rem 4rem;
+        padding: 3rem 0;
+        margin: 0 auto;
+        width: fit-content;
+        border-top: 1px solid #999;
     }
 
     &__list {
@@ -1179,11 +1311,12 @@
         display: flex;
         justify-content: center;
         gap: 5rem;
-        flex-wrap: wrap;
+        margin: 0 auto;
 
-        li {
-            list-style: none;
-        }
+
+        // flex-wrap: wrap;
+
+        li {}
 
         a {
             color: $font-color-black;
@@ -1204,10 +1337,14 @@
         .sns-list {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 3rem;
+
 
             li {
                 list-style: none;
+                width: 2.4rem;
+                height: auto;
             }
 
             a {
@@ -1220,8 +1357,7 @@
             }
 
             img {
-                width: 2.4rem;
-                height: 2.4rem;
+                width: 100%;
             }
         }
     }
@@ -1237,6 +1373,7 @@
 
     @include mq(sp) {
         padding: 5rem 0 0 0;
+
         &__company {
             width: calc(100% - 4rem);
             margin: 0 auto;
