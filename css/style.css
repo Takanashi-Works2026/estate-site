@@ -326,7 +326,7 @@ img {
   font-size: 2rem;
   line-height: 1.65;
   margin-top: 0.6rem;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.3em;
 }
 
 .page-top {
@@ -349,10 +349,10 @@ img {
   text-decoration: none;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 0.4s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.4s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.4s ease, visibility 0.3s ease, transform 0.3s ease;
-  transition: opacity 0.4s ease, visibility 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transition: opacity 0.4s, visibility 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.4s, visibility 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.4s, visibility 0.3s, transform 0.3s;
+  transition: opacity 0.4s, visibility 0.3s, transform 0.3s, -webkit-transform 0.3s;
 }
 .page-top.show {
   opacity: 1;
@@ -729,7 +729,6 @@ img {
   padding-left: 3rem;
   font-size: 3rem;
   line-height: 1.18;
-  letter-spacing: 0.12em;
   padding-left: 5rem;
 }
 .about__text-contents {
@@ -750,7 +749,6 @@ img {
   margin: 0;
   font-size: 1.8rem;
   line-height: 1.37;
-  letter-spacing: 0.35em;
 }
 .about__text span {
   display: block;
@@ -812,7 +810,6 @@ img {
     gap: 0.6rem;
     font-size: 1.6rem;
     line-height: 1.25;
-    letter-spacing: 0.2em;
     -webkit-writing-mode: vertical-rl;
         -ms-writing-mode: tb-rl;
             writing-mode: vertical-rl;
@@ -1210,6 +1207,9 @@ img {
     margin-top: 3rem;
   }
 }
+.news__ists {
+  padding: 1rem;
+}
 @media screen and (max-width: 767px) {
   .news-list__wrapper {
     margin-top: 2rem;
@@ -1265,11 +1265,16 @@ img {
   display: flex;
   padding: 2rem 2rem 1.3rem 2rem;
   position: relative;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 @media screen and (max-width: 767px) {
   .news-item {
     padding: 0;
   }
+}
+.news-item:hover {
+  opacity: 0.7;
 }
 .news-item::after {
   content: "";
