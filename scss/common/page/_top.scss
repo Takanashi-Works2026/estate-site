@@ -387,7 +387,7 @@
 }
 .works {
     width: 100%;
-    padding: 8rem 0 2.5rem;
+    padding: 3rem 0 4rem;
 
 
     @include mq(sp) {
@@ -403,7 +403,7 @@
     }
 
     &__contents {
-        padding: 7rem 0;
+        padding: 6rem 0;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: calc(40 / 960 * 100%);
@@ -508,24 +508,25 @@
         }
 
     }
-    &__ists {
-        padding: 1rem;
-    }
+    &__lists {
+        position: relative;
+        padding: 1rem 2rem 2rem 2rem;
 
+        @include mq(sp) {
+            padding: 0 2rem;
+        }
+    }
     &-list__wrapper {
         @include mq(sp) {
             margin-top: 2rem;
         }
     }
 
-    // 1つ目だけ
-    .news-list__wrapper:first-of-type .news-item {
-        // margin-top: 1rem;
 
         @include mq(sp) {
             margin-top: 3rem;
         }
-    }
+    
 
     &__contents {
         flex: 1;
@@ -550,21 +551,16 @@
         }
     }
 
-    &__lists {
-        position: relative;
-
-        @include mq(sp) {
-            padding: 0 2rem;
-        }
-    }
+    
 
 
     &-item {
         display: flex;
         // padding-top: 1rem;
-        padding: 2rem 2rem 1.3rem 2rem;
+        padding: 2rem 0 1.3rem 0;
         position: relative;
         transition: opacity 0.3s;
+
         @include mq(sp) {
             padding: 0;
         }
@@ -577,15 +573,19 @@
         &::after {
             content: "";
             position: absolute;
-            left: 2rem;
-            right: 2rem;
+            left: 0;
+            right: 0;
             bottom: 0;
             height: 0.1rem;
             background-color: $color-main;
         }
     }
-
-
+    &__item a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
 
     &__date {
         font-size: 1.6rem;
@@ -597,8 +597,8 @@
     &__text {
         font-size: 1.8rem;
         line-height: calc(25 / 18);
-        margin-left: 5.7rem;
-
+        margin-left:7rem;
+        flex: 1;
         .text-sp {
             display: none;
         }
@@ -620,19 +620,41 @@
 
 
     &__more {
-        position: relative;
-        display: flex;
-        margin-top: 1rem;
-        height: 3.8rem;
-        width: 8rem;
-        transition: opacity 0.3s;
-        align-items: center;
-        margin: 1.7rem 2rem 2rem auto;
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 2.5rem;
+    margin: 1.7rem 0rem 2rem auto;
 
+    @include mq(sp) {
+        margin: 1.7rem 0 2rem auto;
+    }
+
+    &::before {
+        content: "more";
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 2rem;
+        color: $color-main;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -50%;
+        width: 100%;
+        height: 100%;
+        // background-color: $color-main;
+        background-image: url("../image/works_icon.svg");
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 8rem auto;
         @include mq(sp) {
             margin: 1.7rem 0 2rem auto;
         }
-
+    }
         &:hover {
             opacity: 0.7;
 
