@@ -830,10 +830,15 @@ img {
   }
 }
 .service__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 8.2rem;
   padding-top: 7rem;
-  -webkit-column-gap: 8rem;
-     -moz-column-gap: 8rem;
-          column-gap: 8rem;
 }
 @media screen and (max-width: 767px) {
   .service__contents {
@@ -868,21 +873,14 @@ img {
     gap: 0.6rem;
   }
 }
-.service .service__image-text {
-  margin-top: 4rem;
-}
-@media screen and (max-width: 767px) {
-  .service .service__image-text {
-    margin-top: 0.5rem;
-  }
-}
 .service__image {
   width: 65.2173913043%;
-  max-width: 60rem;
-  width: 100%;
   height: auto;
   z-index: 2;
   padding-bottom: 5rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .service__image {
@@ -908,36 +906,26 @@ img {
   }
 }
 .service__textareaContainer {
-  position: relative;
-  width: 34.8%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
-.service__textareaContainer::before {
+.service__textarea {
+  padding: 15% 9% 13% 21%;
+  background-color: #4D9600;
+  color: #ffffff;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.service__textarea::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -56%;
-  width: 100%;
+  left: -54%;
+  width: 54.347826087%;
   height: 100%;
-  background-color: #4D9600;
-  z-index: -1;
-}
-.service__textareaContainer__item--reverse .service__textareaContainer::before {
-  left: auto;
-  right: -56%;
-}
-@media screen and (max-width: 767px) {
-  .service__textareaContainer {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    width: 100%;
-    max-width: none;
-  }
-}
-.service__textarea {
-  padding: 5rem 2.7rem 4.2rem 6.8rem;
-  color: #ffffff;
   background-color: #4D9600;
 }
 @media screen and (max-width: 767px) {
@@ -1766,8 +1754,8 @@ img {
   }
 }
 
-.footer {
-  padding: 6rem 0 0 0;
+.footer__container {
+  padding: 8rem 3rem;
 }
 .footer__company {
   text-align: center;
@@ -1809,10 +1797,6 @@ img {
 }
 .footer__list a:hover {
   opacity: 0.7;
-}
-.footer__sns {
-  margin-bottom: 3rem;
-  padding-bottom: 5rem;
 }
 .footer__sns .sns-list {
   display: -webkit-box;
