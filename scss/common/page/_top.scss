@@ -240,9 +240,7 @@
         }
     }
 
-    &__inner {
-        
-    }
+    &__inner {}
 
     &__item {
         display: flex;
@@ -251,9 +249,9 @@
         align-items: flex-end;
 
         &--reverse {
-        flex-direction: row-reverse;
-         
-    }
+            flex-direction: row-reverse;
+
+        }
 
         @include mq(sp) {
             display: flex;
@@ -261,11 +259,11 @@
             gap: 0.6rem;
         }
 
-    
-}
+
+    }
 
     &__image {
-        width:calc(600 / 920 * 100%);
+        width: calc(600 / 920 * 100%);
         height: auto;
         z-index: 2;
         padding-bottom: 5rem;
@@ -297,60 +295,27 @@
         }
     }
 
-    &__textareaContainer {
-        flex: 1;
-        
-//         position: relative;
-//         width: 34.8%;
-//         &::before{
-//             content: "";
-//             position: absolute;
-//             top: 0;
-//             left:-56%;
-//             width: 100%;
-//             height: 100%;
-//             background-color: $color-main;
-//             z-index: -1;
-//         }
 
 
-//             // 2番目だけ変更
-// &__item--reverse {
-//     .service__textareaContainer {
-//         &::before {
-//             left: auto;
-//             right: -56%;
-//         }
-//     }
-// }
-
-//         @include mq(sp) {
-//             position: relative;
-//             top: auto;
-//             left: auto;
-//             right: auto;
-//             width: 100%;
-//             max-width: none;
-//         }
-    }
-    
 
     &__textarea {
-        padding: 15% 9% 13% 21%;
+        padding: 5rem 2.7rem 4.2rem 6.8rem;
         // transform: translateY(50px);
-        background-color: $color-main;
+        // background-color: $color-main;
         color: $font-color-white;
         position: relative;
         flex: 1;
+
 
         &::before {
             content: "";
             position: absolute;
             top: 0;
-            left: -54%;
-            width:calc(500 / 920 * 100%);
+            right: 100%;
+            width: calc(500 / 920 * 100%);
             height: 100%;
             background-color: $color-main;
+
         }
 
         @include mq(sp) {
@@ -361,6 +326,16 @@
             box-sizing: border-box;
         }
     }
+
+    &__item--reserve {
+        .service__textarea {
+            &::before {
+                right: auto;
+                left: 100%;
+            }
+        }
+    }
+
 
     &__textarea-title {
         font-size: 2.5rem;
@@ -383,8 +358,8 @@
             white-space: normal;
         }
     }
-
 }
+
 .works {
     width: 100%;
     padding: 3rem 0 4rem;
@@ -396,7 +371,7 @@
     }
 
     &__inner {
-       
+
         @include mq(sp) {
             padding: 0 2rem;
         }
@@ -486,9 +461,7 @@
         padding: 3rem 0 5rem;
     }
 
-    &__inner {
-       
-    }
+    &__inner {}
 
     &__title {
         padding: 1.5rem;
@@ -496,7 +469,7 @@
 
     &__wrapper {
         display: flex;
-        gap: 6rem;
+        gap: calc(60 / 920 * 100%);
         margin-top: 6rem;
 
         @include mq(sp) {
@@ -508,180 +481,170 @@
         }
 
     }
+
     &__lists {
-        position: relative;
-        padding: 1rem 2rem 2rem 2rem;
+        padding: 0.5rem 2rem 2rem 2rem;
 
         @include mq(sp) {
             padding: 0 2rem;
         }
-    }
-    &-list__wrapper {
-        @include mq(sp) {
-            margin-top: 2rem;
-        }
-    }
+}
 
-
-        @include mq(sp) {
-            margin-top: 3rem;
-        }
-    
-
-    &__contents {
-        flex: 1;
-        background-color: #fff;
-        width: 50%;
-
-        h3 {
-            display: flex;
-            align-items: center;
-            padding-left: 1rem;
-            height: 5rem;
-            background-color: $color-main;
-            color: $font-color-white;
-            font-size: 2rem;
-            line-height: calc(33 / 20);
-        }
-
-        @include mq(sp) {
-            width: 100%;
-            font-size: 1.6rem;
-            line-height: calc(33 / 16);
-        }
-    }
-
-    
-
-
-    &-item {
-        display: flex;
-        // padding-top: 1rem;
-        padding: 2rem 0 1.3rem 0;
-        position: relative;
-        transition: opacity 0.3s;
-
-        @include mq(sp) {
-            padding: 0;
-        }
-        &:hover {
-            opacity: 0.7;
-        }
-
-
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 0.1rem;
-            background-color: $color-main;
-        }
-    }
-    &__item a {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    &__date {
-        font-size: 1.6rem;
-        line-height: calc(33 / 16);
-        white-space: nowrap;
-        font-weight: 500;
-    }
-
-    &__text {
-        font-size: 1.8rem;
-        line-height: calc(25 / 18);
-        margin-left:7rem;
-        flex: 1;
-        .text-sp {
-            display: none;
-        }
-
-        @include mq(sp) {
-            margin: 0 0 1.3rem 1rem;
-
-            .text-pc {
-                display: none;
-            }
-
-            .text-sp {
-                display: inline;
-            }
-
-            // text-overflow: ellipsis
-        }
-    }
-
-
-    &__more {
-    position: relative;
-    display: block;
-    width: 8rem;
-    height: 2.5rem;
-    margin: 1.7rem 0rem 2rem auto;
-
-    @include mq(sp) {
-        margin: 1.7rem 0 2rem auto;
-    }
-
-    &::before {
-        content: "more";
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-size: 2rem;
-        color: $color-main;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -50%;
-        width: 100%;
-        height: 100%;
-        // background-color: $color-main;
-        background-image: url("../image/works_icon.svg");
-        background-repeat: no-repeat;
-        background-position: right center;
-        background-size: 8rem auto;
-        @include mq(sp) {
-            margin: 1.7rem 0 2rem auto;
-        }
-    }
-        &:hover {
-            opacity: 0.7;
-
-            img {
-                transform: translateX(10px);
-            }
-        }
-
-        &-span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 2rem;
-            color: $color-main;
-        }
-
-        &-arrow {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-top: 1rem;
+        &-list__wrapper {
+            border-bottom: 1px solid $color-main;
 
             @include mq(sp) {
                 margin-top: 2rem;
             }
         }
-    }
+
+
+        @include mq(sp) {
+            margin-top: 3rem;
+        }
+
+
+        &__contents {
+            flex: 1;
+            background-color: #fff;
+            width: 50%;
+
+            h3 {
+                display: flex;
+                align-items: center;
+                padding-left: 1rem;
+                height: 5rem;
+                background-color: $color-main;
+                color: $font-color-white;
+                font-size: 2rem;
+                line-height: calc(33 / 20);
+            }
+
+            @include mq(sp) {
+                width: 100%;
+                font-size: 1.6rem;
+                line-height: calc(33 / 16);
+            }
+        }
+
+
+
+
+        &-item {
+            display: flex;
+            // padding-top: 1rem;
+            padding: 2rem 0 1.3rem 0;
+            position: relative;
+            transition: opacity 0.3s;
+
+            @include mq(sp) {
+                padding: 0;
+            }
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        &__item a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__date {
+            font-size: 1.6rem;
+            line-height: calc(33 / 16);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        &__text {
+            font-size: 1.8rem;
+            line-height: calc(25 / 18);
+            margin-left: 7rem;
+            flex: 1;
+
+            .text-sp {
+                display: none;
+            }
+
+            @include mq(sp) {
+                margin: 0 0 1.3rem 1rem;
+
+                .text-pc {
+                    display: none;
+                }
+
+                .text-sp {
+                    display: inline;
+                }
+
+                // text-overflow: ellipsis
+            }
+        }
+
+
+        &__more {
+            position:relative;
+            display: block;
+            width: 8rem;
+            height: 2.5rem;
+            margin: 1.7rem 0rem 2rem auto;
+
+            @include mq(sp) {
+                margin: 1.7rem 0 2rem auto;
+            }
+
+
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -50%;
+                width: 100%;
+                height: 100%;
+                // background-color: $color-main;
+                background-image: url("../image/works_icon.svg");
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-size: 8rem auto;
+
+                @include mq(sp) {
+                    margin: 1.7rem 0 2rem auto;
+                }
+            }
+
+            &:hover {
+                opacity: 0.7;
+
+                img {
+                    transform: translateX(10px);
+                }
+            }
+
+            &-span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 2rem;
+                color: $color-main;
+            }
+
+            &-arrow {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin-top: 1rem;
+
+                @include mq(sp) {
+                    margin-top: 2rem;
+                }
+            }
+        }
+    
 }
 
 .company {
@@ -830,9 +793,7 @@
         padding: 4.5rem 0 5rem;
     }
 
-    &__inner {
-
-    }
+    &__inner {}
 
     &__lead {
         font-size: 2rem;
@@ -1036,9 +997,9 @@
         overflow: auto;
     }
 
-&__policy-scroll {
-    height: 100%;
-    overflow-y: auto;
+    &__policy-scroll {
+        height: 100%;
+        overflow-y: auto;
 
         // スクロールバー全体
         &::-webkit-scrollbar {
@@ -1055,7 +1016,7 @@
             background: #666666;
             border-radius: 0;
         }
-        }
+    }
 
 
     &__policy {
@@ -1246,7 +1207,7 @@
     &__container {
         padding: 8rem 3rem;
     }
-   
+
     &__company {
         // margin: 3.3rem;
         text-align: center;
