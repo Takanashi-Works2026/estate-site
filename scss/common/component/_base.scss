@@ -54,6 +54,10 @@ body {
         padding: 1.5rem;
 
         box-sizing: border-box;
+        @include mq(sp) {
+        width: calc(100% - 4rem);
+    }
+        
     }
 
     &__image {
@@ -157,6 +161,9 @@ body.is-open {
 /// SP対応のためのメディアクエリ
 
 @media (max-width: 767px) {
+    html {
+        scroll-padding-top: 5rem;
+    }
     body {
         font-size: 2rem;
         line-height: calc(36 / 20);
@@ -233,7 +240,21 @@ img {
 
     opacity: 0;
     visibility: hidden;
+    z-index: 999;
     transition: opacity 0.4s, visibility 0.3s, transform 0.3s;
+
+    &.footer-in {
+        bottom: 12rem;
+    }
+
+    @include mq(sp) {
+        right: 2rem;
+        bottom: 2rem;
+
+        &.footer-in {
+            bottom: 10rem;
+        }
+    }
 
     &.show {
         opacity: 1;
@@ -245,13 +266,13 @@ img {
     }
 
     span {
-        width: 1.4rem;
-        height: 1.4rem;
+        // width: 1.4rem;
+        // height: 1.4rem;
 
-        border-top: 0.3rem solid $font-color-white;
-        border-right: 0.3rem solid $font-color-white;
+        // border-top: 0.3rem solid $font-color-white;
+        // border-right: 0.3rem solid $font-color-white;
 
-        transform: rotate(-45deg) translate(-2px,1.5px) ;
+        // transform: rotate(-45deg) translate(-2px,1.5px) ;
     }
     @include mq(sp) {
         width: 5.6rem;

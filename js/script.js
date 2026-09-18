@@ -1,7 +1,7 @@
 const hamburger = document.querySelector(".header__hamburger");
 const nav = document.querySelector(".header__nav");
 
-  hamburger.addEventListener("click", () => {
+hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("is-open");
   nav.classList.toggle("is-open");
   document.body.classList.toggle('is-open');
@@ -34,7 +34,7 @@ const swiper = new Swiper(".mv-swiper", {
 
   effect: "fade",
 
-  
+
 });
 
 // ヘッダーメニュがaboutまでスクロールしたら背景色を変える
@@ -42,14 +42,14 @@ const header = document.querySelector('.header');
 const about = document.querySelector('#about');
 
 window.addEventListener('scroll', () => {
-    const aboutTop = about.getBoundingClientRect().top;
-    const headerHeight = header.offsetHeight;
+  const aboutTop = about.getBoundingClientRect().top;
+  const headerHeight = header.offsetHeight;
 
-    if (aboutTop <= headerHeight) {
-        header.classList.add('is-scrolled');
-    } else {
-        header.classList.remove('is-scrolled');
-    }
+  if (aboutTop <= headerHeight) {
+    header.classList.add('is-scrolled');
+  } else {
+    header.classList.remove('is-scrolled');
+  }
 });
 
 // modal用
@@ -64,28 +64,28 @@ const modalText = document.querySelector(".modal__text");
 
 worksItems.forEach(item => {
 
-    item.addEventListener("click", () => {
-      console.log("WORKSがクリックされました");
-        const image = item.dataset.modalImage;
-        const title = item.querySelector(".works-item__textarea h3").textContent;
-        const text = item.querySelector(".works-item__text p").textContent;
+  item.addEventListener("click", () => {
+    console.log("WORKSがクリックされました");
+    const image = item.dataset.modalImage;
+    const title = item.querySelector(".works-item__textarea h3").textContent;
+    const text = item.querySelector(".works-item__text p").textContent;
 
-        modalImage.src = image;
-        modalImage.alt = text;
+    modalImage.src = image;
+    modalImage.alt = text;
 
-        modalTitle.textContent = title;
-        modalText.textContent = text;
+    modalTitle.textContent = title;
+    modalText.textContent = text;
 
-        modal.classList.add("is-open");
-        document.body.classList.add("is-fixed");
+    modal.classList.add("is-open");
+    document.body.classList.add("is-fixed");
 
-    });
+  });
 
 });
 
-function closeModal(){
-    modal.classList.remove("is-open");
-    document.body.classList.remove("is-fixed");
+function closeModal() {
+  modal.classList.remove("is-open");
+  document.body.classList.remove("is-fixed");
 }
 
 
@@ -109,31 +109,45 @@ fadeElements.forEach((el) => observer.observe(el));
 
 // about専用のフワと表示させるアニメーション
 const aboutFade = document.querySelector(".about__fade");
-if(aboutFade){
+if (aboutFade) {
   const observer = new IntersectionObserver(
     (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-show");
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.2
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-show");
+          observer.unobserve(entry.target);
         }
-    );
+      });
+    },
+    {
+      threshold: 0.2
+    }
+  );
 
-    observer.observe(aboutFade);
+  observer.observe(aboutFade);
 }
 
 // Page Top
 const pageTop = document.querySelector(".page-top");
+const footer = document.querySelector('.footer');
 
 window.addEventListener("scroll", () => {
+  const footerTop = footer.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+
   if (window.scrollY > 300) {
     pageTop.classList.add("show");
   } else {
     pageTop.classList.remove("show");
+  }
+  // フッターが画面内に入ったら位置を上に移動
+  if (footerTop < windowHeight) {
+
+    pageTop.classList.add("footer-in");
+
+  } else {
+
+    pageTop.classList.remove("footer-in");
+
   }
 });

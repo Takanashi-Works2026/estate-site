@@ -18,10 +18,10 @@
         background-color: $color-main;
     }
 
-    @media (max-width: 767px) {
-        padding-inline: 2rem;
-        height: 5rem;
+    @include mq(sp) {
+            height: 5rem;
     }
+
 
     .inner {
         max-width: 98rem;
@@ -30,6 +30,10 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+
+        @include mq(sp) {
+            padding-left: 2rem;
+        }
     }
 
     // ------------------------
@@ -41,6 +45,10 @@
             align-items: center;
             height: 8rem;
             transition: opacity 0.4s;
+
+            @include mq(sp) {
+                height: 5rem;
+            }
 
             @media (any-hover: hover) {
                 &:hover {
@@ -55,24 +63,31 @@
         line-height: calc(20 / 20);
         font-weight: 500;
         color: $font-color-white;
+
+        @include mq(sp) {
+            font-size: 2rem;
+            line-height: calc(33 / 20);
+        }
+
     }
 
-    @media (max-width: 767px) {
-        &__logo-text {
-            font-size: 2rem;
-        }
-    }
 
     // ------------------------
     // ナビゲーション（PC）
     // ------------------------
     &__nav {
         margin-left: auto;
+        height: 8rem;
+
+         @include mq(sp) {
+        height: 5rem;
+    }
+
 
         ul {
             display: flex;
             align-items: center;
-            column-gap: 3rem;
+            column-gap: 3.3rem;
         }
 
         a {
@@ -85,6 +100,10 @@
             height: 8rem;
             transition: opacity 0.3s;
             position: relative;
+
+            @include mq(sp) {
+                height: 5rem;
+            }
 
 
             span {
@@ -101,6 +120,10 @@
                     background: $font-color-white;
                     // transform: translateX(-50%) scaleX(0);
                     transition: width 0.3s ease;
+
+                    @include mq(sp) {
+                        display: none;
+                    }
                 }
             }
 
@@ -125,14 +148,12 @@
 
     // タブレットサイズ
     @media (max-width: 900px) {
-        &__logo-text {
-        font-size: 1.8rem;
-        }
 
         &__nav {
             ul {
                 column-gap: 1.5rem;
             }
+
             a {
                 font-size: 1.6rem;
             }
@@ -240,7 +261,7 @@
                 font-size: 1.8rem;
                 line-height: calc(33 / 18);
                 height: 5.8rem;
-                padding: 1rem 0 0 2rem;
+                padding: 1.2rem 0 0 2rem;
             }
 
             &.is-open {
