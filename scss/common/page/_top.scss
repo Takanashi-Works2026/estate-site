@@ -141,11 +141,6 @@
     &__text {
         writing-mode: vertical-rl;
 
-        display: flex;
-        // 縦書きの列を横方向に並べる
-        flex-direction: column;
-        // gap: 2.4rem;
-
         margin: 0;
 
         font-size: 1.8rem;
@@ -194,6 +189,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
+            width: fit-content;
+            margin-inline: auto;
         }
 
 
