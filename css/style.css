@@ -825,9 +825,9 @@ img {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
     margin-inline: auto;
   }
   .about__title {
@@ -853,6 +853,9 @@ img {
     -webkit-writing-mode: vertical-rl;
         -ms-writing-mode: tb-rl;
             writing-mode: vertical-rl;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
   }
   .about__text span {
     display: block;
