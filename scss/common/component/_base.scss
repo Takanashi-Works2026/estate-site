@@ -26,16 +26,29 @@ body {
     line-height: calc(25 / 16);
     letter-spacing: 0;
 }
+
 .modal {
-    display: none;
     position: fixed;
     inset: 0;
     z-index: 9999;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.4s,
+        visibility 0.4s;
+
     &.is-open {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+
     }
 
     &__bg {
@@ -48,16 +61,17 @@ body {
         position: relative;
         z-index: 1;
 
-        width: 50rem;
+        width: 45rem;
         background-color: #fff;
 
-        padding: 1.5rem;
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
 
         box-sizing: border-box;
+
         @include mq(sp) {
-        width: calc(100% - 4rem);
-    }
-        
+            width: calc(100% - 4rem);
+        }
+
     }
 
     &__image {
@@ -71,7 +85,7 @@ body {
         align-items: center;
         gap: 1rem;
 
-        padding: 1rem 0.5rem 0.5rem;
+        padding-top: 1rem;
     }
 
     &__title,
@@ -84,7 +98,7 @@ body {
     &__close {
         position: absolute;
         top: -0.3rem;
-        right:-0.3rem;
+        right: -0.3rem;
 
         z-index: 2;
 
@@ -95,25 +109,29 @@ body {
 
         border: none;
         background-color: #fff;
-        background: transparent;;
+        background: transparent;
+        ;
         color: #000;
         font-size: 1.8rem;
         line-height: 1;
         cursor: pointer;
     }
 }
+
 // modal用、画像拡大の間は背景のスクロール禁止
 body.is-fixed {
     overflow: hidden;
 }
+
 body.is-open {
     overflow: hidden;
 }
+
 // fade in用
 .fade-in {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(40px),
+     opacity 0.8s, transform 0.8s;
 
     &.is-show {
         opacity: 1;
@@ -125,6 +143,7 @@ body.is-open {
     width: 100%;
     overflow: hidden;
 }
+
 /*-------------------------
    PC・SPのみの表示切替・改行防止・SPで改行
 -------------------------*/
@@ -147,9 +166,11 @@ body.is-open {
         cursor: default;
     }
 }
+
 .no-break {
     white-space: nowrap;
 }
+
 .sp-only {
     display: none;
 
@@ -164,6 +185,7 @@ body.is-open {
     html {
         scroll-padding-top: 5rem;
     }
+
     body {
         font-size: 2rem;
         line-height: calc(36 / 20);
@@ -173,6 +195,7 @@ body.is-open {
         display: none !important;
     }
 }
+
 // 共通パーツ
 
 img {
@@ -265,15 +288,6 @@ img {
         opacity: 0.7;
     }
 
-    span {
-        // width: 1.4rem;
-        // height: 1.4rem;
-
-        // border-top: 0.3rem solid $font-color-white;
-        // border-right: 0.3rem solid $font-color-white;
-
-        // transform: rotate(-45deg) translate(-2px,1.5px) ;
-    }
     @include mq(sp) {
         width: 5.6rem;
         height: 5.6rem;

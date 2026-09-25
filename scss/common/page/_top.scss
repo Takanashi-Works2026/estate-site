@@ -86,30 +86,29 @@
     // テキスト全体
     &__textwrapper {
         position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        padding-left: 13.5rem;
 
-        top: 50.6%;
-        left: 36.5%;
-
-        transform: translate(-50%, -50%);
+        // tb
+        @media (min-width: 768px) and (max-width: 900px) {
+            padding-left: 9rem;
+        }
     }
 
 
     // タイトル＋本文
     &__fade {
         display: flex;
-
-        // HTMLではタイトルが先なので、
-        // タイトルを右側にする
         flex-direction: row-reverse;
-
-        align-items: flex-start;
 
         opacity: 0;
         transform: translateY(40px);
 
         transition:
-            opacity 0.8s ease,
-            transform 0.8s ease;
+            opacity 0.8s,
+            transform 0.8s;
     }
 
     &__fade.is-show {
@@ -121,14 +120,17 @@
     &__title {
         writing-mode: vertical-rl;
 
-        flex-shrink: 0;
-
         margin-left: 4rem;
         // padding-left: 3rem;
         font-size: 3rem;
         letter-spacing: 0.16em;
         // line-height: 1.18;
         // padding-left: 5rem;
+
+        @media (min-width: 768px) and (max-width: 900px) {
+            margin-left: 2rem;
+            font-size: 2.5rem;
+        }
     }
 
 
@@ -148,6 +150,10 @@
         letter-spacing: 0.39em;
 
         // 文字同士の間隔を調整
+        @media (min-width: 768px) and (max-width: 900px) {
+            font-size: 1.6rem;
+            line-height: 2.36;
+        }
     }
 
 
@@ -159,8 +165,8 @@
     }
 
 
-    // SP
-    @media (max-width: 767px) {
+
+    @include mq(sp) {
 
         height: auto;
         min-height: 55rem;
@@ -196,7 +202,7 @@
 
 
         &__title {
-            font-size: calc(25 / 375 * 100vw);
+            font-size: 2.5rem;
             line-height: 2.66em;
             writing-mode: vertical-rl;
             flex-shrink: 0;
@@ -213,7 +219,7 @@
         }
 
         &__text {
-            font-size: calc(16 / 375 * 100vw);
+            font-size: 1.6rem;
             line-height: 1.62;
             letter-spacing: 0.26em;
             // margin-top: 1rem;
@@ -231,7 +237,7 @@
 
 .service {
     background-color: $color-background;
-    padding: 8rem 0 13rem;
+    padding: 8rem 0;
 
     @include mq(sp) {
         padding: 5rem 0 5rem;
@@ -270,7 +276,7 @@
             }
 
             .service__textarea {
-                padding: 5rem 6.8rem 4.2rem 4rem;
+                padding: 5rem 3% 4.2rem 4.5%;
 
                 @include mq(sp) {
                     padding: 2rem 2rem 1rem 2rem;
@@ -333,7 +339,7 @@
 
 
     &__textarea {
-        padding: 5rem 2.7rem 4.2rem 6.8rem;
+        padding: 5rem 3% 4.2rem 7%;
         // transform: translateY(50px);
         // background-color: $color-main;
         color: $font-color-white;
@@ -399,8 +405,10 @@
         font-size: 2.5rem;
         line-height: calc(33 / 25);
 
+
         @media (max-width: 944px) {
-            font-size: 1.7rem;
+            font-size: 2rem;
+
         }
 
 
@@ -416,9 +424,11 @@
         line-height: calc(25 / 16);
         margin-top: 1.6rem;
 
+
         // タブレットサイズ
         @media (max-width: 944px) {
-            font-size: 1rem;
+            font-size: 1.4rem;
+
         }
 
         @include mq(sp) {
@@ -431,7 +441,7 @@
 
 .works {
     width: 100%;
-    padding: 3rem 0 10rem;
+    padding: 8rem 0 10rem;
 
 
     @include mq(sp) {
@@ -469,10 +479,11 @@
         margin: 0;
         border: none;
         background: transparent;
-         box-sizing: border-box;
+        box-sizing: border-box;
 
         max-width: none;
         transition: opacity 0.4s;
+        cursor: pointer;
         // object-fit: cover;
 
         &:hover {
@@ -510,11 +521,15 @@
         }
     }
 
-    &-item__textarea {
+    &-item__caption {
         padding-top: 2rem;
         font-size: 1.6rem;
         line-height: calc(25 / 16);
-        cursor: pointer;
+
+        @include mq(sp) {
+            padding-top: 1rem;
+        }
+
 
         // 1つ目だけSPで横並び
         &--row {
@@ -527,26 +542,13 @@
 
 
 
-        @include mq(sp) {
-            padding-top: 0.9rem;
-            font-size: 1.6rem;
-            line-height: calc(25 / 16);
-        }
+        // @include mq(sp) {
+        //     padding-top: 0.9rem;
+        //     font-size: 1.6rem;
+        //     line-height: calc(25 / 16);
+        // }
     }
 
-    &-item__text {
-        font-size: 1.6rem;
-        line-height: calc(25 / 16);
-        // white-space: nowrap;
-        cursor: pointer;
-
-
-        @include mq(sp) {
-            // padding-top: 0.5rem;
-            font-size: 1.6rem;
-            line-height: calc(25 / 16);
-        }
-    }
 }
 
 .news {
@@ -554,10 +556,8 @@
     background-color: $color-background;
 
     @include mq(sp) {
-        padding: 5rem 0;
+        padding: 5rem 0 6rem;
     }
-
-    &__inner {}
 
     // &__title {
     //     padding: 1.5rem;
@@ -573,7 +573,7 @@
             flex-direction: column;
             gap: 5rem;
             width: 100%;
-            margin-top: 3.6rem;
+            margin-top: 3.8rem;
         }
 
     }
@@ -582,7 +582,7 @@
         padding: 1rem 2rem 1.4rem 2rem;
 
         @include mq(sp) {
-            padding: 2rem 2rem 1rem 2rem;
+            padding: 2rem 2rem 1.6rem 2rem;
 
         }
     }
@@ -594,7 +594,7 @@
             margin-top: 2rem;
 
             &:first-child {
-                margin-top: 1rem;
+                margin-top: 0.6rem;
             }
         }
     }
@@ -603,7 +603,7 @@
 
 
     &__contents {
-        flex: 1;
+        // flex: 1;
         background-color: #fff;
         width: 50%;
 
@@ -637,115 +637,115 @@
         transition: opacity 0.3s;
 
         @include mq(sp) {
-            padding: 0;
+            padding: 0 0 1.3rem;
         }
 
         &:hover {
             opacity: 0.7;
         }
-    }
 
-    &__item a {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
+        &__text {
+            margin-left: 15.4%;
 
-    &__date {
-        font-size: 1.6rem;
-        line-height: calc(33 / 16);
-        white-space: nowrap;
-        font-weight: 500;
-
-    }
-
-    &__text {
-        font-size: 1.8rem;
-        line-height: calc(25 / 18);
-        margin-left: 6rem;
-        flex: 1;
-
-        .text-sp {
-            display: none;
+            @include mq(sp) {
+                margin-left: 6%;
+            }
         }
 
-        @include mq(sp) {
-            margin: 0 0 1.3rem 1rem;
+        &__item a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
 
-            .text-pc {
+        &__date {
+            font-size: 1.6rem;
+            line-height: calc(33 / 16);
+            white-space: nowrap;
+            font-weight: 500;
+
+        }
+
+        &__text {
+            font-size: 1.8rem;
+            line-height: calc(25 / 18);
+
+            flex: 1;
+
+            .text-sp {
                 display: none;
             }
 
-            .text-sp {
-                display: inline;
-            }
-
-            // text-overflow: ellipsis
-        }
-    }
-
-
-    &__more {
-        position: relative;
-        display: block;
-        width: 8rem;
-        height: 2.5rem;
-        margin: 1.7rem 0rem 2rem auto;
-
-        @include mq(sp) {
-            margin: 1.7rem 0 2rem auto;
-        }
-
-
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -50%;
-            width: 100%;
-            height: 100%;
-            // background-color: $color-main;
-            background-image: url("../image/works_icon.svg");
-            background-repeat: no-repeat;
-            background-position: right center;
-            background-size: 8rem auto;
-
             @include mq(sp) {
-                margin: 0;
+                // margin: 0 0 1.3rem 1rem;
+
+                .text-pc {
+                    display: none;
+                }
+
+                .text-sp {
+                    display: inline;
+                }
+
+                // text-overflow: ellipsis
             }
         }
-
-        &:hover {
-            opacity: 0.7;
-
-            img {
-                transform: translateX(10px);
-            }
         }
-
-        &-span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 2rem;
-            line-height: calc(33 / 20);
-            color: $color-main;
-        }
-
-        &-arrow {
-            width: 100%;
-            height: auto;
+        &__more {
+            position: relative;
             display: block;
-            margin-top: 1rem;
 
-            @include mq(sp) {
-                margin-top: 2rem;
+            width: 8rem;
+            height: 2.5rem;
+
+            margin: 1.7rem 0 2rem auto;
+
+            transition: transform 0.6s, opacity 0.3s;
+
+              @include mq(sp) {
+                margin: 1.2rem 0rem 1.5rem auto;
+              }
+
+            &:hover {
+                transform: translateX(10px);
+                opacity: 0.7;
             }
-        }
-    }
 
+            &-span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 2rem;
+                // line-height: calc(20 / 20);
+                color: $color-main;
+            }
+
+            &::after {
+                content: "";
+
+                position: absolute;
+
+                right: 0;
+                bottom: -12px;
+
+                width: 8rem;
+                height: 2rem;
+
+                background-image: url("../image/works_icon.svg");
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-size: contain;
+
+                @include mq(sp) {
+
+                    bottom: -18px;
+                }
+            }
+
+        }
+
+    
 }
 
 .company {
@@ -772,7 +772,7 @@
         width: 100%;
 
         @include mq(sp) {
-            // position: static;
+
             margin-top: 3.8rem;
             display: flex;
             flex-direction: column;
@@ -810,7 +810,7 @@
         left: 65%;
         right: 3.5%;
         padding: 3rem;
-        padding: 4.9rem 2rem 4.2rem 4rem;
+        padding: 4.9rem 2% 4.2rem 4%;
         color: $font-color-white;
 
         &::before {
@@ -1003,6 +1003,10 @@
         color: $font-color-black;
         font-size: 1.8rem;
         line-height: calc(25 / 18);
+
+    }
+
+    select {
         cursor: pointer;
     }
 
@@ -1015,7 +1019,6 @@
 
 
     textarea {
-        cursor: pointer;
         min-height: 20rem;
         resize: none;
         color: $font-color-black;
@@ -1228,7 +1231,7 @@
         align-items: center;
         text-align: center;
         cursor: pointer;
-        transition: 0.3s;
+        transition: opacity 0.3s;
 
         &:hover {
             // opacity: 0.7;
@@ -1366,9 +1369,9 @@
         // ボタン
         &__btn {
             align-items: center;
-
+            width: 100%;
             height: 5rem;
-            margin-top: 2.3rem;
+            margin: 2.3rem 0 0 0;
             font-size: 2rem;
             line-height: calc(33 / 20);
 
@@ -1393,10 +1396,14 @@
         width: 70%;
         margin: 0 auto;
 
-        transition: 0.3s;
 
-        &:hover {
-            opacity: 0.7;
+
+        a {
+            transition: opacity 0.3s;
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
     }
 
@@ -1413,7 +1420,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        column-gap: 3rem;
+        column-gap: 5rem;
         margin: 0 auto;
 
 
@@ -1425,7 +1432,7 @@
             color: $font-color-black;
             font-size: 1.8rem;
             line-height: calc(33 / 18);
-            transition: 0.3s;
+            transition: opacity 0.3s;
 
             &:hover {
                 opacity: 0.7;
@@ -1451,7 +1458,7 @@
 
             a {
                 display: block;
-                transition: 0.3s;
+                transition: opacity 0.3s;
 
                 &:hover {
                     opacity: 0.7;

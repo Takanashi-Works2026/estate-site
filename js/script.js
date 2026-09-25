@@ -58,23 +58,19 @@ const modal = document.querySelector("#modal");
 const modalImage = document.querySelector(".modal__image");
 const close = document.querySelector(".modal__close");
 const modalBg = document.querySelector(".modal__bg");
-const modalTitle = document.querySelector(".modal__title");
-const modalText = document.querySelector(".modal__text");
-
+const modalCaption = document.querySelector(".modal__caption");
 
 worksItems.forEach(item => {
 
   item.addEventListener("click", () => {
     console.log("WORKSがクリックされました");
     const image = item.dataset.modalImage;
-    const title = item.querySelector(".works-item__textarea h3").textContent;
-    const text = item.querySelector(".works-item__text p").textContent;
+    const caption = item.querySelector(".works-item__caption").textContent.trim();
 
     modalImage.src = image;
-    modalImage.alt = text;
+    modalImage.alt = caption;
+    modalCaption.textContent = caption;
 
-    modalTitle.textContent = title;
-    modalText.textContent = text;
 
     modal.classList.add("is-open");
     document.body.classList.add("is-fixed");
