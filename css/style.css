@@ -849,10 +849,6 @@ img {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    margin-inline: auto;
   }
   .about__title {
     font-size: 2.5rem;
