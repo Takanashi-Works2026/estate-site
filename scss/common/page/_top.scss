@@ -190,15 +190,15 @@
         }
 
 
-        &__fade {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        // &__fade {
+        //     display: flex;
+        //     flex-direction: column;
+        //     align-items: center;
+        //     justify-content: center;
 
-            // width: max-content;
-            // margin-inline: auto;
-        }
+        //     // width: max-content;
+        //     // margin-inline: auto;
+        // }
 
 
         &__title {
@@ -225,7 +225,7 @@
             // margin-top: 1rem;
             // padding-top: 1.5rem;
             writing-mode: vertical-rl;
-            width: max-content;
+            // width: max-content;
         }
 
         &__text span {
