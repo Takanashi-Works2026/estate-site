@@ -806,10 +806,6 @@ img {
     line-height: 2.36;
   }
 }
-.about__text span {
-  display: block;
-  white-space: nowrap;
-}
 @media screen and (max-width: 767px) {
   .about {
     height: auto;
@@ -834,21 +830,6 @@ img {
     padding: 5rem 2rem;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-  }
-  .about__fade {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
   .about__title {
     font-size: 2.5rem;
@@ -876,10 +857,6 @@ img {
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
-  }
-  .about__text span {
-    display: block;
-    white-space: nowrap;
   }
 }
 

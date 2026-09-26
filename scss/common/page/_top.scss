@@ -157,13 +157,6 @@
     }
 
 
-    &__text span {
-        display: block;
-
-        // spanの途中で折り返さない設定
-        white-space: nowrap;
-    }
-
 
 
     @include mq(sp) {
@@ -225,12 +218,7 @@
             // margin-top: 1rem;
             // padding-top: 1.5rem;
             writing-mode: vertical-rl;
-            // width: max-content;
-        }
-
-        &__text span {
-            display: block;
-            white-space: nowrap;
+            width: max-content;
         }
     }
 }
