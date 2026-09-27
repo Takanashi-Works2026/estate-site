@@ -89,7 +89,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         // tb
         @media (min-width: 768px) and (max-width: 900px) {
             // padding-left: 9rem;
@@ -99,11 +99,10 @@
 
     // タイトル＋本文
     &__fade {
-        
+
         display: flex;
         flex-direction: row-reverse;
-        width :fit-content;
-         writing-mode: vertical-rl;
+
         // opacity: 0;
         // transform: translateY(40px);
 
@@ -119,7 +118,7 @@
 
     // タイトル
     &__title {
-       
+
 
         margin-left: 4rem;
         // // padding-left: 3rem;
@@ -128,6 +127,7 @@
         line-height: 1.18;
         white-space: nowrap;
         // // padding-left: 5rem;
+        writing-mode: vertical-rl;
 
         @media (min-width: 768px) and (max-width: 900px) {
             margin-left: 2rem;
@@ -139,11 +139,12 @@
     // 本文
     &__text-contents {
         margin: 0;
+        writing-mode: vertical-rl;
     }
 
 
     &__text {
-        
+
 
         margin: 0;
         // white-space: nowrap;
@@ -163,62 +164,62 @@
 
     @include mq(sp) {
 
-            height: auto;
-            min-height: 55rem;
+        height: auto;
+        min-height: 55rem;
 
 
-            &__textwrapper {
-                width: 100%;
-                height: 100%;
+        &__textwrapper {
+            width: 100%;
+            height: 100%;
 
-        //         top: 0;
-        //         left: 0;
+            //         top: 0;
+            //         left: 0;
 
-        //         transform: none;
+            //         transform: none;
 
-        //         display: flex;
-        //         align-items: center;
-        //         justify-content: center;
+            //         display: flex;
+            //         align-items: center;
+            //         justify-content: center;
 
-                padding: 5rem 2rem;
-                box-sizing: border-box;
-            }
-
-
-            &__fade {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: fit-content;
-                
-
-        //         // width: max-content;
-        //         // margin-inline: auto;
-            }
+            padding: 5rem 2rem;
+            box-sizing: border-box;
+        }
 
 
-            &__title {
-                font-size: 2.5rem;
-                line-height: 2.66em;
-        //         // flex-shrink: 0;
-        //         // padding-top: 2.5rem;
-        //         // padding-left: 0;
-                margin-left: 0;
-                margin-bottom: 0.5rem;
-        //         // margin-top: 4rem;
-        //         // transform: translateY(-2rem);
-            }
+        &__fade {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
 
-            &__text-contents {
-                margin-top: 2.4rem;
-                width: fit-content;
-            }
 
-            &__text {
-                font-size: 1.6rem;
-                line-height: 1.62;
-                letter-spacing: 0.26em;
-            }
+            //         // width: max-content;
+            //         // margin-inline: auto;
+        }
+
+
+        &__title {
+            font-size: 2.5rem;
+            line-height: 2.66em;
+            //         // flex-shrink: 0;
+            //         // padding-top: 2.5rem;
+            //         // padding-left: 0;
+            margin-left: 0;
+            margin-bottom: 0.5rem;
+            //         // margin-top: 4rem;
+            //         // transform: translateY(-2rem);
+        }
+
+        &__text-contents {
+            margin-top: 2.4rem;
+            width: fit-content;
+        }
+
+        &__text {
+            font-size: 1.6rem;
+            line-height: 1.62;
+            letter-spacing: 0.26em;
+        }
     }
 }
 
