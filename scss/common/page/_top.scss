@@ -137,14 +137,14 @@
 
     // 本文
     &__text-contents {
-        // margin: 0;
+        margin: 0;
     }
 
 
     &__text {
         writing-mode: vertical-rl;
 
-        // margin: 0;
+        margin: 0;
         // white-space: nowrap;
         font-size: 1.8rem;
         line-height: 2.66;
@@ -188,7 +188,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                width: 100%;
+                width: fit-content;
                 
 
         //         // width: max-content;
@@ -210,7 +210,7 @@
 
             &__text-contents {
                 margin-top: 2.4rem;
-                width: 100%;
+                width: fit-content;
             }
 
             &__text {
