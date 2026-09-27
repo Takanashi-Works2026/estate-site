@@ -214,7 +214,7 @@
 }
 
 .service {
-    background-color: $color-background;
+    background-color: $color-background-sub;
     padding: 8rem 0;
 
     @include mq(sp) {
@@ -531,7 +531,7 @@
 
 .news {
     padding: 8rem 0 8rem;
-    background-color: $color-background;
+    background-color: $color-background-sub;
 
     @include mq(sp) {
         padding: 5rem 0 6rem;

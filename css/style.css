@@ -845,7 +845,7 @@ img {
 }
 
 .service {
-  background-color: rgba(77, 150, 0, 0.15);
+  background-color: rgba(77, 150, 0, 0.1);
   padding: 8rem 0;
 }
 @media screen and (max-width: 767px) {
@@ -1139,7 +1139,7 @@ img {
 
 .news {
   padding: 8rem 0 8rem;
-  background-color: rgba(77, 150, 0, 0.15);
+  background-color: rgba(77, 150, 0, 0.1);
 }
 @media screen and (max-width: 767px) {
   .news {
