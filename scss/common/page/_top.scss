@@ -103,6 +103,7 @@
         display: flex;
         flex-direction: row-reverse;
         width :fit-content;
+         writing-mode: vertical-rl;
         // opacity: 0;
         // transform: translateY(40px);
 
@@ -118,7 +119,7 @@
 
     // タイトル
     &__title {
-        writing-mode: vertical-rl;
+       
 
         margin-left: 4rem;
         // // padding-left: 3rem;
@@ -142,7 +143,7 @@
 
 
     &__text {
-        writing-mode: vertical-rl;
+        
 
         margin: 0;
         // white-space: nowrap;
