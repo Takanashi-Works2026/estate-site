@@ -136,14 +136,5 @@ window.addEventListener("scroll", () => {
   } else {
     pageTop.classList.remove("show");
   }
-  // フッターが画面内に入ったら位置を上に移動
-  if (footerTop < windowHeight) {
-
-    pageTop.classList.add("footer-in");
-
-  } else {
-
-    pageTop.classList.remove("footer-in");
-
-  }
+  
 });

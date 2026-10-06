@@ -16,6 +16,7 @@
 
     &.is-scrolled {
         background-color: $color-main;
+        transition: 0.8s
     }
 
     @include mq(sp) {
