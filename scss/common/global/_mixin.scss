@@ -5,11 +5,11 @@
         @content;
     }
 }
-@mixin tab {
-    @media (min-width: 768px) and (max-width: 1023px) {
-        @content;
-    }
-}
+// @mixin tab {
+//     @media (min-width: 768px) and (max-width: 1023px) {
+//         @content;
+//     }
+// }
 @mixin pc {
     @media (min-width: 1024px) {
         @content;
