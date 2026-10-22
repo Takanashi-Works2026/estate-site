@@ -213,11 +213,11 @@ body {
 }
 .modal__close {
   position: absolute;
-  top: 0.3rem;
-  right: 0.1rem;
+  top: 0.2rem;
+  right: 0.279rem;
   z-index: 2;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
   border: none;
   background-color: #fff;
@@ -907,8 +907,14 @@ img {
     padding: 2rem 2rem 1rem 2rem;
   }
 }
+.service__item:nth-child(3) .service__textarea-title {
+  margin-left: 0;
+}
+.service__item:nth-child(3) .service__textarea-text {
+  margin-left: 0;
+}
 @media screen and (max-width: 767px) {
-  .service__item {
+  .service__item:nth-child(3) {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -976,7 +982,7 @@ img {
 }
 @media (min-width: 768px) and (max-width: 900px) {
   .service__textarea {
-    padding-left: 4%;
+    padding-left: 3%;
   }
 }
 .service__textarea::before {
@@ -1034,7 +1040,7 @@ img {
   line-height: 1.32;
   margin-left: 1.3rem;
 }
-@media (max-width: 944px) {
+@media (min-width: 768px) and (max-width: 944px) {
   .service__textarea-title {
     font-size: 2rem;
     margin-left: 0;
@@ -1044,6 +1050,7 @@ img {
   .service__textarea-title {
     font-size: 2rem;
     line-height: 1.25;
+    margin-left: 0;
   }
 }
 .service__textarea-text {
@@ -1051,9 +1058,10 @@ img {
   line-height: 1.5625;
   margin: 1.6rem 0 0 1.3rem;
 }
-@media (max-width: 944px) {
+@media (min-width: 768px) and (max-width: 944px) {
   .service__textarea-text {
     font-size: 1.4rem;
+    margin: 1.6rem 0 0 0;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1162,7 +1170,7 @@ img {
 }
 @media screen and (max-width: 767px) {
   .news {
-    padding: 5rem 0 5.1rem;
+    padding: 5rem 0 5rem;
   }
 }
 .news__wrapper {
@@ -1181,7 +1189,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 5.2rem;
+    gap: 5rem;
     width: 100%;
     margin-top: 3.8rem;
   }
@@ -1199,7 +1207,12 @@ img {
 }
 @media screen and (max-width: 767px) {
   .news-list__wrapper:first-child .news-item {
-    padding-top: 0.7rem;
+    padding: 0.7rem 0 0;
+  }
+}
+@media screen and (max-width: 767px) and (max-width: 767px) {
+  .news-list__wrapper:first-child .news-item {
+    padding: 0.5rem 0 1.5rem;
   }
 }
 .news__contents {
@@ -1241,14 +1254,14 @@ img {
 }
 @media screen and (max-width: 767px) {
   .news-item {
-    padding: 2rem 0 1.3rem;
+    padding: 2rem 0 1.2rem;
   }
 }
 .news-item:hover {
   opacity: 0.7;
 }
 .news-item__text {
-  margin-left: 15.4%;
+  margin-left: 17.6%;
 }
 @media screen and (max-width: 767px) {
   .news-item__text {
@@ -1256,7 +1269,7 @@ img {
   }
 }
 .news-item__date {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 2.0625;
   white-space: nowrap;
   font-weight: 500;
@@ -1273,73 +1286,34 @@ img {
           flex: 1;
 }
 .news__more {
-  margin: 1.7rem -0.5rem 0.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  margin: 1rem 0 1rem auto;
+  display: block;
+  width: 8rem;
+  height: 3.8rem;
+  position: relative;
 }
-.news__more a {
+.news__more .news__more-more {
+  position: absolute;
+  top: 1rem;
   font-size: 2rem;
-  line-height: 1.65;
+  line-height: 1;
   font-weight: 600;
   color: #4D9600;
-  margin-right: 3.3rem;
-  position: relative;
+}
+.news__more span {
   -webkit-transition: -webkit-transform 0.7s;
   transition: -webkit-transform 0.7s;
   transition: transform 0.7s;
   transition: transform 0.7s, -webkit-transform 0.7s;
 }
-@media screen and (max-width: 767px) {
-  .news__more a {
-    margin-right: 3rem;
-  }
-}
-.news__more a .arrow {
-  width: 8rem;
-  height: 0.1rem;
-  background: #4D9600;
-  position: absolute;
-  bottom: 0.4rem;
-  left: 0;
-}
-@media screen and (max-width: 767px) {
-  .news__more a .arrow {
-    left: 0.5rem;
-  }
-}
-.news__more a .arrow span {
-  width: 1.7rem;
-  height: 0.1rem;
-  background: #4D9600;
-  position: absolute;
-  right: 0;
-  top: 0;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  -webkit-transform-origin: right center;
-          transform-origin: right center;
-}
-.news__more a .arrow::before {
-  content: "";
-  width: 0.1rem;
-  height: 1.8rem;
-  background: #4D9600;
-  position: absolute;
-  top: -1.2rem;
-  right: 1.2rem;
-}
-.news__more a:hover {
+.news__more span:hover {
   -webkit-transform: translateX(1rem);
           transform: translateX(1rem);
 }
-@media screen and (max-width: 767px) {
-  .news__more {
-    margin: 1.5rem 0 0.4rem auto;
-  }
+.news__more span .news__more-arrow {
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
 }
 
 .company {
@@ -1368,7 +1342,7 @@ img {
 }
 @media screen and (max-width: 767px) {
   .company__item {
-    margin-top: 3.8rem;
+    margin-top: 3.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1458,6 +1432,7 @@ img {
 @media screen and (max-width: 767px) {
   .company .first__text {
     font-size: 2rem;
+    margin-bottom: 0;
   }
 }
 .company__textarea-text {
@@ -1475,7 +1450,7 @@ img {
 }
 @media (min-width: 768px) and (max-width: 927px) {
   .company__address {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1485,7 +1460,7 @@ img {
   }
 }
 .company__phone {
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 0.64;
   margin-bottom: 2rem;
 }
@@ -1494,18 +1469,22 @@ img {
   line-height: 1;
 }
 @media (min-width: 768px) and (max-width: 927px) {
-  .company__phone .tel-pc {
-    font-size: 1.8rem;
-  }
-}
-@media screen and (max-width: 767px) {
-  .company__phone .tel-pc {
-    font-size: 2.5rem;
+  .company__phone {
+    font-size: 1.7rem;
   }
 }
 @media screen and (max-width: 767px) {
   .company__phone {
     margin-top: 1rem;
+    font-size: 2.5rem;
+  }
+}
+.company__phone span {
+  font-size: 1.6rem;
+}
+@media screen and (max-width: 767px) {
+  .company__phone span {
+    font-size: 1.4rem;
   }
 }
 .company__email {
@@ -1514,7 +1493,7 @@ img {
 }
 @media (min-width: 768px) and (max-width: 927px) {
   .company__email {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-top: 1rem;
   }
 }
@@ -1553,7 +1532,7 @@ img {
 .contact__lead {
   font-size: 2rem;
   line-height: 1.65;
-  margin-top: 3.8rem;
+  margin-top: 3.5rem;
 }
 .contact__form {
   width: 100%;
@@ -1591,10 +1570,14 @@ img {
       -ms-flex: 1;
           flex: 1;
 }
+.contact__input message {
+  margin-top: 1rem;
+}
 .contact input[type=text],
 .contact input[type=email],
 .contact select,
 .contact textarea {
+  display: block;
   width: 100%;
   height: 5rem;
   padding: 1rem 2rem;
@@ -1616,7 +1599,7 @@ img {
   position: absolute;
   top: 50%;
   right: 2rem;
-  width: 2rem;
+  width: 1.7rem;
   height: 1.3rem;
   background-color: #4D9600;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -1695,8 +1678,8 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background: #000000;
   border-radius: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -1744,8 +1727,8 @@ img {
   width: -moz-fit-content;
   width: fit-content;
 }
-.contact__row-content textarea {
-  margin-top: 0.5rem;
+.contact__row-content .contact__input {
+  margin-top: 1rem;
 }
 .contact__row-check {
   display: -webkit-box;
@@ -1797,7 +1780,7 @@ img {
   background-color: #fff;
   padding: 1rem 1rem 1rem 1rem;
   height: 30rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 .contact__policy-scroll {
   height: 100%;
@@ -1832,7 +1815,7 @@ img {
 .contact__btn {
   width: 30rem;
   height: 5rem;
-  margin: 3.3rem auto 0;
+  margin: 3rem auto 0;
   background: #4D9600;
   color: #fff;
   border: solid 1px #4D9600;
@@ -1900,7 +1883,7 @@ img {
     font-size: 1.6rem;
     gap: 1rem;
   }
-  .contact__row-content textarea {
+  .contact__row-content .contact__input {
     margin-top: 0;
   }
   .contact__row-check {
@@ -1916,12 +1899,12 @@ img {
     padding: 1rem;
   }
   .contact textarea {
-    height: 18rem;
+    height: 20rem;
   }
   .contact__check {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem 0.4rem;
-    margin-top: 0;
+    margin-top: 0.5rem;
   }
   .contact__check label {
     font-size: 1.5rem;
