@@ -101,24 +101,10 @@
 
         display: flex;
         flex-direction: row-reverse;
-
-        // opacity: 0;
-        // transform: translateY(40px);
-
-        // transition:
-        //     opacity 0.8s,
-        //     transform 0.8s;
-    }
-
-    &__fade.is-show {
-        // opacity: 1;
-        // transform: translateY(0);
     }
 
     // タイトル
     &__title {
-
-
         margin-left: 4rem;
         // // padding-left: 3rem;
         font-size: 3rem;
@@ -234,8 +220,6 @@
         }
     }
 
-    &__inner {}
-
     &__item {
         display: flex;
         position: relative;
@@ -261,12 +245,6 @@
                 }
             }
         }
-
-        &:nth-child(3) {
-            // margin-top: 5.8rem;
-            // padding-top: 5.8rem;
-        }
-
 
         @include mq(sp) {
             display: flex;
@@ -742,8 +720,6 @@
         }
     }
 
-    &__title {}
-
     &__item {
         display: flex;
         margin-top: 6.8rem;
@@ -852,8 +828,6 @@
         line-height: calc(25/16);
         margin-top: 0.7rem;
 
-        span {}
-
         @media (min-width: 768px) and (max-width: 927px) {
             font-size: 1.2rem;
         }
@@ -930,7 +904,6 @@
         padding: 5rem 0;
     }
 
-    &__inner {}
 
     &__form-container {
         width: 100%;
@@ -1184,8 +1157,6 @@
             margin-top: 1rem;
         }
 
-        h4 {}
-
 
     }
 
@@ -1258,12 +1229,6 @@
             font-size: 2rem;
             line-height: calc(33 / 20);
             align-items: center;
-        }
-
-        // 内容入力
-        &__row-content {
-
-            
         }
 
         &__row-check {
@@ -1396,10 +1361,6 @@
         margin: 0 auto;
 
 
-        // flex-wrap: wrap;
-
-        li {}
-
         a {
             color: $font-color-black;
             font-size: 1.8rem;
@@ -1478,12 +1439,6 @@
             column-gap: 3rem;
             // row-gap: 0.5rem;
 
-
-
-            li {
-                // width: 100%;
-            }
-
             a {
                 font-size: 1.8rem;
                 line-height: calc(33 / 18);
@@ -1498,10 +1453,6 @@
                 padding-top: 3rem;
                 gap: 3rem;
 
-                img {
-                    // width: 2.6rem;
-                    // height: 2.6rem;
-                }
             }
         }
 
