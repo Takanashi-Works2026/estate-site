@@ -1194,7 +1194,7 @@ img {
 }
 @media screen and (max-width: 767px) {
   .news {
-    padding: 5rem 0 5rem;
+    padding: 5rem 0 5.5rem;
   }
 }
 .news__wrapper {
@@ -1213,7 +1213,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 5rem;
+    gap: 5.4rem;
     width: 100%;
     margin-top: 3.8rem;
   }
@@ -1309,16 +1309,14 @@ img {
       -ms-flex: 1;
           flex: 1;
 }
-.news__more {
-  margin: 1rem 0 1rem auto;
-  display: block;
-  width: 8rem;
-  height: 3.8rem;
-  position: relative;
+.news__more-wrap {
+  text-align: right;
 }
-.news__more .news__more-more {
-  position: absolute;
-  top: 1rem;
+.news__more {
+  display: inline-block;
+  position: relative;
+  margin-top: 2rem;
+  padding: 0 3.4rem 1.3rem 0;
   font-size: 2rem;
   line-height: 1;
   font-weight: 600;
@@ -1328,19 +1326,22 @@ img {
   transition: transform 0.7s;
   transition: transform 0.7s, -webkit-transform 0.7s;
 }
-.news__more .news__more-arrow {
-  position: absolute;
-  left: 0;
-  bottom: -0.5rem;
-  -webkit-transition: -webkit-transform 0.7s;
-  transition: -webkit-transform 0.7s;
-  transition: transform 0.7s;
-  transition: transform 0.7s, -webkit-transform 0.7s;
+@media screen and (max-width: 767px) {
+  .news__more {
+    padding: 0 3rem 1.3rem 0;
+  }
 }
-.news__more:hover .news__more-more,
-.news__more:hover .news__more-arrow {
+.news__more:hover {
   -webkit-transform: translateX(1rem);
           transform: translateX(1rem);
+}
+.news__more-arrow {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.news__more-arrow img {
+  display: block;
 }
 
 .company {
@@ -1416,6 +1417,11 @@ img {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+@media (min-width: 768px) and (max-width: 927px) {
+  .company__textarea {
+    padding-left: 3%;
+  }
 }
 .company__textarea::before {
   content: "";
@@ -1960,9 +1966,8 @@ img {
             align-items: center;
   }
   .contact__btn {
-    width: 100%;
     height: 5rem;
-    margin: 2.3rem 0 0 0;
+    margin-top: 2.3rem;
     font-size: 2rem;
     line-height: 1.65;
   }

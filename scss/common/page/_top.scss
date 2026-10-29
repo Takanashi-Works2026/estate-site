@@ -242,15 +242,16 @@
         width: 100%;
         align-items: flex-end;
 
-         @include mq(sp) {
-                display: flex;
-                flex-direction: column;
-                gap: 0.6rem;
+        @include mq(sp) {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
 
-            }
+        }
 
         &--reverse {
             flex-direction: row-reverse;
+
             @include mq(sp) {
                 display: flex;
                 flex-direction: column;
@@ -575,7 +576,7 @@
     background-color: $color-background-sub;
 
     @include mq(sp) {
-        padding: 5rem 0 5rem;
+        padding: 5rem 0 5.5rem;
     }
 
     // &__title {
@@ -592,7 +593,7 @@
         @include mq(sp) {
             display: flex;
             flex-direction: column;
-            gap: 5rem;
+            gap: 5.4rem;
             width: 100%;
             margin-top: 3.8rem;
 
@@ -686,6 +687,7 @@
                 margin-left: 6%;
             }
         }
+
         &__date {
             font-size: 1.4rem;
             line-height: calc(33 / 16);
@@ -705,42 +707,47 @@
         }
     }
 
+    &__more-wrap {
+        text-align: right;
+    }
+
+
     &__more {
-        margin: 1rem 0 1rem auto;
-        display: block;
-        width: 8rem;
-        height: 3.8rem;
+        display: inline-block;
         position: relative;
-        
+        margin-top: 2rem;
+        padding: 0 3.4rem 1.3rem 0;
+        font-size: 2rem;
+        line-height: calc(20 / 20);
+        font-weight: 600;
+        color: $color-main;
+        transition: transform 0.7s;
 
-        .news__more-more {
-            //    padding-right: 3rem;
-            position: absolute;
-            top: 1rem;
-            font-size: 2rem;
-            line-height: calc(20 / 20);
-            font-weight: 600;
-            color: $color-main;
-            transition: transform 0.7s;
-
+        @include mq(sp) {
+            padding: 0 3rem 1.3rem 0;
         }
-            .news__more-arrow {
-                position: absolute;
-                left: 0;
-                bottom: -0.5rem;
-                 transition: transform 0.7s;
-            }
-            &:hover {
-                .news__more-more,
-                .news__more-arrow{
-                transform: translateX(1rem);
-                }
-                
-            }
 
+        &:hover {
+            transform: translateX(1rem);
+        }
 
     }
+
+    &__more-arrow {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    &__more-arrow img {
+        display: block;
+    }
+
+
+
+
 }
+
 
 
 .company {
@@ -810,6 +817,10 @@
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
+
+        @media (min-width: 768px) and (max-width: 927px) {
+            padding-left: 3%;
+        }
 
         &::before {
             // content: "";
@@ -1397,9 +1408,8 @@
         // ボタン
         &__btn {
             // align-items: center;
-            width: 100%;
             height: 5rem;
-            margin: 2.3rem 0 0 0;
+            margin-top: 2.3rem;
             font-size: 2rem;
             line-height: calc(33 / 20);
 
