@@ -4,8 +4,7 @@ const nav = document.querySelector(".header__nav");
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("is-open");
   nav.classList.toggle("is-open");
-  document.body.classList.toggle('is-open');
-  console.log(nav.classList);
+  document.body.classList.toggle('is-open')
 });
 
 
@@ -63,7 +62,6 @@ const modalCaption = document.querySelector(".modal__caption");
 worksItems.forEach(item => {
 
   item.addEventListener("click", () => {
-    console.log("WORKSがクリックされました");
     const image = item.dataset.modalImage;
     const caption = item.querySelector(".works-item__caption").textContent.trim();
 
@@ -125,10 +123,9 @@ if (aboutFade) {
 
 // Page Top
 const pageTop = document.querySelector(".page-top");
-const footer = document.querySelector('.footer');
+
 
 window.addEventListener("scroll", () => {
-  const footerTop = footer.getBoundingClientRect().top;
   const windowHeight = window.innerHeight;
 
   if (window.scrollY > 300) {

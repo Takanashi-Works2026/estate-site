@@ -469,13 +469,6 @@
 
     }
 
-    &__inner {
-
-        @include mq(sp) {
-            padding: 0 2rem;
-        }
-    }
-
     &__contents {
         padding-top: 6.8rem;
         display: grid;
@@ -502,7 +495,7 @@
         box-sizing: border-box;
 
         max-width: none;
-        transition: opacity 0.4s;
+        transition: opacity 0.3s;
         cursor: pointer;
         // object-fit: cover;
 
@@ -593,7 +586,7 @@
         @include mq(sp) {
             display: flex;
             flex-direction: column;
-            gap: 5.4rem;
+            gap: 4.7rem;
             width: 100%;
             margin-top: 3.8rem;
 
@@ -709,13 +702,13 @@
 
     &__more-wrap {
         text-align: right;
+        margin-top: 2rem;
     }
 
 
     &__more {
         display: inline-block;
         position: relative;
-        margin-top: 2rem;
         padding: 0 3.4rem 1.3rem 0;
         font-size: 2rem;
         line-height: calc(20 / 20);
@@ -759,11 +752,7 @@
     }
 
 
-    &__inner {
-        @include mq(sp) {
-            padding: 0 3rem;
-        }
-    }
+    
 
     &__title {}
 
@@ -950,7 +939,7 @@
         }
 
         a {
-            transition: opacity 0.3s;
+            transition: opacity 0.7s;
 
             &:hover {
                 opacity: 0.3;
@@ -1015,10 +1004,6 @@
 
     &__input {
         flex: 1;
-
-        message {
-            margin-top: 1rem;
-        }
     }
 
     // テキスト入力
@@ -1288,10 +1273,6 @@
 
     @include mq(sp) {
 
-        &__inner {
-            padding: 0 3rem;
-        }
-
         &__lead {
             margin-top: 3.5rem;
             font-size: 2rem;
@@ -1427,7 +1408,7 @@
 
 .footer {
     &__container {
-        padding: 8rem 3rem;
+        padding: 8rem 0;
     }
 
     &__company {

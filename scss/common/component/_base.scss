@@ -260,8 +260,6 @@ img {
     opacity: 0;
     visibility: hidden;
     z-index: 999;
-    transition: opacity 0.4s, visibility 0.3s, transform 0.3s;
-
 
     @include mq(sp) {
         right: 2rem;
