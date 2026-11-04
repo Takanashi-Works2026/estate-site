@@ -1181,6 +1181,7 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem 1.2rem;
         margin-top: 1rem;
+        
 
         label {
             display: flex;
@@ -1190,6 +1191,7 @@
             cursor: pointer;
             font-size: 1.8rem;
             line-height: calc(25 / 18);
+            white-space: nowrap;
         }
     }
 
@@ -1369,10 +1371,12 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem 0.4rem;
             margin-top: 0.5rem;
+            
 
             label {
                 font-size: 1.5rem;
                 gap: 1rem;
+                
             }
         }
 

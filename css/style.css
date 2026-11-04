@@ -1797,6 +1797,7 @@ img {
   cursor: pointer;
   font-size: 1.8rem;
   line-height: 1.3888888889;
+  white-space: nowrap;
 }
 .contact__label {
   width: 17rem;
