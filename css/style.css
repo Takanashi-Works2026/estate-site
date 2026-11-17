@@ -135,7 +135,7 @@ html {
   word-break: break-all;
   /* 移動したときになめらかにスクロール */
   scroll-behavior: smooth;
-  scroll-padding-top: 8rem;
+  scroll-padding-top: 80px;
   font-size: 10px;
 }
 
@@ -240,10 +240,10 @@ body.is-open {
   opacity: 0;
   -webkit-transform: translateY(40px);
           transform: translateY(40px);
-  -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
-  transition: opacity 0.8s, -webkit-transform 0.8s;
-  transition: opacity 0.8s, transform 0.8s;
-  transition: opacity 0.8s, transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transition: opacity 0.7s, -webkit-transform 0.7s;
+  transition: opacity 0.7s, -webkit-transform 0.7s;
+  transition: opacity 0.7s, transform 0.7s;
+  transition: opacity 0.7s, transform 0.7s, -webkit-transform 0.7s;
 }
 .fade-in.is-show {
   opacity: 1;
@@ -292,11 +292,7 @@ body.is-open {
 
 @media (max-width: 767px) {
   html {
-    scroll-padding-top: 5rem;
-  }
-  body {
-    font-size: 2rem;
-    line-height: 1.8;
+    scroll-padding-top: 50px;
   }
   .pc {
     display: none !important;
@@ -364,6 +360,8 @@ img {
   opacity: 0;
   visibility: hidden;
   z-index: 999;
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 @media screen and (max-width: 767px) {
   .page-top {
@@ -1520,11 +1518,11 @@ img {
   }
 }
 .company__email a {
-  -webkit-transition: opacity 0.7s;
-  transition: opacity 0.7s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .company__email a:hover {
-  opacity: 0.3;
+  opacity: 0.7;
 }
 @media screen and (max-width: 767px) {
   .company__email {
@@ -1841,8 +1839,8 @@ img {
           align-items: center;
   text-align: center;
   cursor: pointer;
-  -webkit-transition: color 0.7s, background-color 0.7s;
-  transition: color 0.7s, background-color 0.7s;
+  -webkit-transition: color 0.3s, background-color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
 }
 .contact__btn:hover {
   color: #4D9600;

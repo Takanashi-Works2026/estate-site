@@ -11,7 +11,7 @@ html {
     word-break: break-all;
     /* 移動したときになめらかにスクロール */
     scroll-behavior: smooth;
-    scroll-padding-top: 8rem;
+    scroll-padding-top: 80px;
     font-size: 10px;
 }
 
@@ -127,7 +127,7 @@ body.is-open {
 .fade-in {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s, transform 0.8s;
+    transition: opacity 0.7s, transform 0.7s;
 
 &.is-show {
         opacity: 1;
@@ -179,12 +179,7 @@ body.is-open {
 
 @media (max-width: 767px) {
     html {
-        scroll-padding-top: 5rem;
-    }
-
-    body {
-        font-size: 2rem;
-        line-height: calc(36 / 20);
+        scroll-padding-top: 50px;
     }
 
     .pc {
@@ -260,6 +255,7 @@ img {
     opacity: 0;
     visibility: hidden;
     z-index: 999;
+    transition: opacity 0.3s, visibility 0.3s;
 
     @include mq(sp) {
         right: 2rem;
